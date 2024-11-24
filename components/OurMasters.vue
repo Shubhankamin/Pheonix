@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #000000">
+  <div style="background-color: #4f000b">
     <v-row>
       <v-col cols="12" class="">
         <h1
@@ -99,7 +99,6 @@ const sliderImages = [
 
 const slidePrev = () => {
   document.querySelector(".swiper-button-prev").click();
-  
 };
 
 const slideNext = () => {

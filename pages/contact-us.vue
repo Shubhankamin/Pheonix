@@ -17,7 +17,7 @@
           <ul class="example-2 pb-5">
             <li class="icon-content">
               <a
-                href="https://www.linkedin.com/in/shubhank-amin-a7b231225/"
+                href=""
                 aria-label="LinkedIn"
                 target="_blank"
                 data-social="LinkedIn"
@@ -29,7 +29,7 @@
             </li>
             <li class="icon-content">
               <a
-                href="https://github.com/Shubhankamin?tab=repositories"
+                href=""
                 aria-label="github"
                 data-social="github"
                 target="_blank"

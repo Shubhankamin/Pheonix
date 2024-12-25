@@ -1,16 +1,8 @@
 <template>
   <div>
-    <v-container fluid class="pt-16 mt-4 px-0">
+    <v-container fluid class="pt-10 px-0">
       <v-row>
-        <v-col class="bg-black text-white mt-10" cols="12">
-          <!-- <h1
-            class="text-center mt-2 acme-bold-h1"
-            style="font-weight: bolder; font-size: 50px"
-          >
-            THE KARATE CLASS
-          </h1> -->
-        </v-col>
-        <v-col class="pl-5">
+        <v-col class="pl-5 mt-15" cols="12">
           <v-img
             src="/images/hero/hero-2.jpg"
             height="70vh"
@@ -20,16 +12,20 @@
         </v-col>
       </v-row>
       <v-row class="px-3 background-black text-white">
-        <v-col cols="6">
-          <p class="ubuntu-regular-h1 ml-2" style="font-weight:800">CHANGE <br />YOUR LIFE</p>
+        <v-col cols="12" md="6">
+          <p class="ubuntu-regular-h1 ml-2" style="font-weight: 800">
+            CHANGE <br />YOUR LIFE
+          </p>
         </v-col>
-        <v-col cols="6">
+        <v-col cols="12" md="6">
           <p class="mt-4 ubuntu-regular-h3">
             A gentle art karate kick florida, we believe that karate kick
             training can help every child and adult develop mental and physical
             skills they need to succeed in life.
           </p>
-          <button class="custom-button mt-10 ubuntu-regular-h3">START NOW</button>
+          <button class="custom-button mt-10 ubuntu-regular-h3">
+            START NOW
+          </button>
         </v-col>
       </v-row>
     </v-container>

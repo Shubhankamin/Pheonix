@@ -3,13 +3,13 @@
     <v-row>
       <v-col cols="12" class="">
         <h1
-          style=" text-transform: uppercase"
+          style="text-transform: uppercase"
           class="text-center text-white ubuntu-regular-h1"
         >
           SEE WHAT STUDENT SAYS
         </h1>
         <div class="d-flex justify-end px-4">
-          <p class=" mb-2 ubuntu-regular-h3" style="color: #ffb400">
+          <p class="mb-2 ubuntu-regular-h3" style="color: #ffb400">
             See All <v-icon size="18">mdi-arrow-top-right-thin</v-icon>
           </p>
         </div>
@@ -33,6 +33,13 @@
       :loop="true"
       :slides-per-view="3"
       :space-between="10"
+      :breakpoints="{
+        2560: { slidesPerView: 3 },
+        1440: { slidesPerView: 3 },
+        1024: { slidesPerView: 3 },
+        767: { slidesPerView: 2 },
+        320: { slidesPerView: 1 },
+      }"
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
       class="mySwiper mb-10"
     >
@@ -44,12 +51,12 @@
           elevation="0"
         >
           <v-row>
-            <v-col cols="2">
+            <v-col cols="6" md="2" >
               <div>
                 <v-img :src="item.src" />
               </div>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" md="6">
               <div class="d-flex flex-column justify-end pt-14">
                 <p class="ubuntu-regular-h3">{{ item.name }}</p>
                 <p class="ubuntu-regular-h3">{{ item.subName }}</p>

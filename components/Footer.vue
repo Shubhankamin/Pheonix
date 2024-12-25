@@ -7,37 +7,38 @@
           class="border-opacity-50 mb-5"
           color="white"
         ></v-divider>
-        <v-col cols="2">
+        <v-col cols="12" md="2">
           <v-img src="/images/logo/logo-foot.svg" />
         </v-col>
-        <v-col cols="2" class="text-white d-flex justify-center">
+        <v-col cols="12" md="2" class="text-white d-flex justify-center">
           <div>
             <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="2" class="text-white d-flex justify-center">
+        <v-col cols="12" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight:700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 2</p>
+            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="2" class="text-white d-flex justify-center">
+        <v-col cols="12" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight:700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 2</p>
+            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="2" class="text-white d-flex justify-center">
+        <v-col cols="12" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight:700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight:500">section 2</p>
+            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
+            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
+
         <v-divider
           :thickness="3"
           class="border-opacity-50 mt-5"
@@ -100,7 +101,7 @@
       </v-row>
       <v-row class="justify-center py-0 my-0">
         <v-col cols="6">
-          <p class="text-center text-white">
+          <p class="text-center text-white ubuntu-regular-h3">
             © 2019 Lift Media | All Rights Reserved
           </p>
         </v-col>

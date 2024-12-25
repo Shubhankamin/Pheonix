@@ -68,7 +68,6 @@
     font-family: "Sharp-Bold";
   }
 
-
   .sharp-medium-h1 {
     font-size: 48px;
     font-family: "Sharp-Medium";
@@ -2386,4 +2385,585 @@
     font-size: 10px;
     font-family: "Poppins-Regular";
   }
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@media (max-width: 2600px) {
+  .poppins-regular-h2 {
+    font-size: 38px;
+    font-family: "Poppins-Regular";
+  }
+  .poppins-regular-h3 {
+    font-size: 28px;
+    font-family: "Poppins-Regular";
+  }
+  .poppins-regular-h4 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+}
+
+@media (max-width: 2400px) {
+  .poppins-regular-h1 {
+    font-size: 44px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 34px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 18px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h1 {
+    font-size: 44px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 34px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+
+@media (max-width: 2000px) {
+  .poppins-regular-h2 {
+    font-size: 36px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 18px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h2 {
+    font-size: 36px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+@media (max-width: 1800px) {
+  .poppins-regular-h2 {
+    font-size: 30px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 18px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h2 {
+    font-size: 30px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+
+@media (max-width: 1600px) {
+  .poppins-regular-h1 {
+    font-size: 34px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 14px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 12px;
+    font-family: "Poppins-Regular";
+  }
+  .poppins-regular-h5 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h1 {
+    font-size: 50px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 20px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 12px;
+    font-family: "Ubuntu-Regular";
+  }
+  .ubuntu-regular-h5 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+
+@media (max-width: 1400px) {
+  .poppins-regular-h2 {
+    font-size: 22px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 14px;
+    font-family: "Poppins-Regular";
+  }
+  .poppins-regular-h5 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 22px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 22px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 25px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 14px;
+    font-family: "Ubuntu-Regular";
+  }
+  .ubuntu-regular-h5 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+
+@media (max-width: 1280px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h5 {
+    font-size: 8px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h5 {
+    font-size: 8px;
+    font-family: "Ubuntu-Regular";
+  }
+}
+
+@media (max-width: 1080px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 12px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 20px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 12px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+
+@media (max-width: 920px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 12px;
+    font-family: "Poppins-Regular";
+  }
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 12px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+
+@media (max-width: 720px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 20px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+@media (max-width: 600px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 20px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+@media (max-width: 480px) {
+  .poppins-regular-h1 {
+    font-size: 26px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 20px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 16px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 12px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 26px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 20px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 16px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 12px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+@media (max-width: 420px) {
+  .poppins-regular-h1 {
+    font-size: 18px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 14px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 14px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+}
+@media (max-width: 320px) {
+  .poppins-regular-h1 {
+    font-size: 18px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h2 {
+    font-size: 14px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h3 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+
+  .poppins-regular-h4 {
+    font-size: 10px;
+    font-family: "Poppins-Regular";
+  }
+  .poppins-regular-h5 {
+    font-size: 8px;
+    font-family: "Poppins-Regular";
+  }
+
+  .ubuntu-regular-h1 {
+    font-size: 18px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h2 {
+    font-size: 14px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h3 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+
+  .ubuntu-regular-h4 {
+    font-size: 10px;
+    font-family: "Ubuntu-Regular";
+  }
+  .ubuntu-regular-h5 {
+    font-size: 8px;
+    font-family: "Ubuntu-Regular";
+  }
+
 }

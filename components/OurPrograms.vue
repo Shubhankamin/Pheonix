@@ -3,8 +3,8 @@
     <v-row>
       <v-col cols="12" class="">
         <h1
-          style="font-size: 50px; text-transform: uppercase"
-          class="text-center text-white mb-2"
+          style="text-transform: uppercase"
+          class="text-center text-white mb-2 ubuntu-regular-h1"
         >
           Our programs
         </h1>
@@ -35,19 +35,13 @@
             elevation="0"
           >
             <div class="d-flex justify-space-between">
-              <p
-                style="
-                  text-transform: uppercase;
-                  font-weight: 600;
-                  font-size: 20px;
-                "
-              >
+              <p style="text-transform: uppercase" class="ubuntu-regular-h3">
                 {{ item.title }}
               </p>
               <v-icon color="#ffb400">mdi-arrow-top-right-thin</v-icon>
             </div>
-            <p>{{ item.description }}</p>
-            <p>{{ item.description2 }}</p>
+            <p class="ubuntu-regular-h4">{{ item.description }}</p>
+            <p class="ubuntu-regular-h4">{{ item.description2 }}</p>
           </v-card>
         </v-img>
       </swiper-slide>

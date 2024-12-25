@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-container fluid class="mx-0 px-0">
-      <Nav style="position: fixed" />
-      <v-row class="mt-12">
+      <Nav  />
+      <v-row class="">
         <v-col>
           <div class="image-grid">
             <div class="image-row">

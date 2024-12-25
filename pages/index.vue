@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nav style="position: fixed; z-index: 999999" />
+    <Nav style="position: fixed; z-index: 999999"  />
     <Hero />
     <Benefits />
     <OurPrograms />

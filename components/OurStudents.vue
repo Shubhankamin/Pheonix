@@ -3,13 +3,13 @@
     <v-row>
       <v-col cols="12" class="">
         <h1
-          style="font-size: 50px; text-transform: uppercase"
-          class="text-center text-white"
+          style=" text-transform: uppercase"
+          class="text-center text-white ubuntu-regular-h1"
         >
           SEE WHAT STUDENT SAYS
         </h1>
         <div class="d-flex justify-end px-4">
-          <p class=" mb-2" style="color: #ffb400">
+          <p class=" mb-2 ubuntu-regular-h3" style="color: #ffb400">
             See All <v-icon size="18">mdi-arrow-top-right-thin</v-icon>
           </p>
         </div>
@@ -51,14 +51,14 @@
             </v-col>
             <v-col cols="6">
               <div class="d-flex flex-column justify-end pt-14">
-                <p>{{ item.name }}</p>
-                <p>{{ item.subName }}</p>
+                <p class="ubuntu-regular-h3">{{ item.name }}</p>
+                <p class="ubuntu-regular-h3">{{ item.subName }}</p>
               </div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12">
-              <p class="mx-2 mb-4">
+              <p class="mx-2 mb-4 ubuntu-regular-h3">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure
                 dicta obcaecati voluptatum laborum mollitia, quos inventore
                 alias recusandae eius, exercitationem, fugiat odit minima culpa

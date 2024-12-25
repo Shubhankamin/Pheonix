@@ -137,7 +137,7 @@
   </div>
 </template>
 <script setup>
-const whatsappLink = "https://wa.me/9731837215";
+const whatsappLink = "https://wa.me/973183726";
 </script>
 
 <style scoped>

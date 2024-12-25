@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="12" class="">
           <p
-            style="font-size: 50px; text-transform: uppercase;"
+            style=" text-transform: uppercase;"
             class="text-center text-white ubuntu-regular-h1"
           >
             Benefits of Karate Kick
@@ -12,10 +12,10 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="6" class="px-1">
+        <v-col cols="12" md="6" class="px-1">
           <v-img src="/images/kid-karate.jpeg"></v-img>
         </v-col>
-        <v-col cols="6" class="confidence-section pl-10 d-flex flex-column justify-space-between pt-5 ">
+        <v-col cols="12" md="6" class="confidence-section pl-10 d-flex flex-column justify-space-between pt-5 ">
           <div
             v-for="(content, index) in contents"
             :key="index"

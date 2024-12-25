@@ -15,6 +15,13 @@
       :pagination="{ clickable: true }"
       :loop="true"
       :slides-per-view="3"
+      :breakpoints="{
+        2560: { slidesPerView: 3 },
+        1440: { slidesPerView: 3 },
+        1024: { slidesPerView: 3 },
+        767: { slidesPerView: 2 },
+        320: { slidesPerView: 1 },
+      }"
       :space-between="10"
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
       class="mySwiper mb-10"

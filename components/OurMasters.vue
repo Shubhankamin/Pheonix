@@ -3,14 +3,14 @@
     <v-row>
       <v-col cols="12" class="">
         <h1
-          style=" text-transform: uppercase"
+          style="text-transform: uppercase"
           class="text-center text-white ubuntu-regular-h1"
         >
           SEE OUR MASTERS
         </h1>
       </v-col>
     </v-row>
-    <div class="d-flex justify-end mb-5 pr-5">
+    <div class="d-none d-md-flex justify-end mb-5 pr-5">
       <div class="custom-navigation">
         <v-btn icon @click="slidePrev" class="custom-prev custom-button">
           <v-icon color="#ffb400">mdi-arrow-left</v-icon>
@@ -26,10 +26,17 @@
       :pagination="{ clickable: true }"
       :navigation="true"
       :loop="true"
+      :breakpoints="{
+        2560: { slidesPerView: 3 },
+        1440: { slidesPerView: 3 },
+        1024: { slidesPerView: 3 },
+        767: { slidesPerView: 2 },
+        320: { slidesPerView: 1 },
+      }"
       :slides-per-view="3"
       :space-between="10"
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
-      class="mySwiper mb-10"
+      class="mySwiper mb-10 mt-5 mt-md-0"
     >
       <swiper-slide v-for="(item, i) in sliderImages" :key="i">
         <v-img
@@ -47,7 +54,10 @@
             elevation="0"
           >
             <div class="d-flex justify-space-between">
-              <p style="text-transform: uppercase; color: #ffb400" class="ubuntu-regular-h3">
+              <p
+                style="text-transform: uppercase; color: #ffb400"
+                class="ubuntu-regular-h3"
+              >
                 {{ item.name }}
               </p>
               <p style="text-transform: uppercase" class="ubuntu-regular-h3">

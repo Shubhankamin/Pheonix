@@ -3,12 +3,12 @@
     <v-container fluid class="background-red">
       <v-row>
         <v-col cols="12" class="">
-          <h1
-            style="font-size: 50px; text-transform: uppercase"
-            class="text-center text-white"
+          <p
+            style="font-size: 50px; text-transform: uppercase;"
+            class="text-center text-white ubuntu-regular-h1"
           >
             Benefits of Karate Kick
-          </h1>
+          </p>
         </v-col>
       </v-row>
       <v-row>
@@ -22,8 +22,8 @@
             class="content-wrapper "
           >
             <v-icon class="icon" color="white">{{ content.icon }}</v-icon>
-            <h2 class="title">{{ content.title }}</h2>
-            <p class="description mb-5">{{ content.description }}</p>
+            <h2 class="title ubuntu-regular-h2">{{ content.title }}</h2>
+            <p class="description mb-5 ubuntu-regular-h3">{{ content.description }}</p>
           </div>
         </v-col>
       </v-row>
@@ -83,7 +83,6 @@ const contents = ref([
 }
 
 .title {
-  font-size: 24px;
   font-weight: bold;
   margin: 10px 0;
 }

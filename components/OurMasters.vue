@@ -3,8 +3,8 @@
     <v-row>
       <v-col cols="12" class="">
         <h1
-          style="font-size: 50px; text-transform: uppercase"
-          class="text-center text-white"
+          style=" text-transform: uppercase"
+          class="text-center text-white ubuntu-regular-h1"
         >
           SEE OUR MASTERS
         </h1>
@@ -47,10 +47,10 @@
             elevation="0"
           >
             <div class="d-flex justify-space-between">
-              <p style="text-transform: uppercase; color: #ffb400">
+              <p style="text-transform: uppercase; color: #ffb400" class="ubuntu-regular-h3">
                 {{ item.name }}
               </p>
-              <p style="text-transform: uppercase">
+              <p style="text-transform: uppercase" class="ubuntu-regular-h3">
                 {{ item.subName }}
               </p>
             </div>
@@ -120,7 +120,7 @@ const slideNext = () => {
   right: 10px;
   display: flex;
   gap: 10px;
-  z-index: 9999999;
+  z-index: 99;
 }
 
 .custom-button {

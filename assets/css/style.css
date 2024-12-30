@@ -30,13 +30,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #d3f576; /* Scrollbar color */
+  background: #4f000b; /* Scrollbar color */
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #d3f576; /* Darker color when hovered */
+  background: #4f000b; /* Darker color when hovered */
 }
 @font-face {
   font-family: "Acme";
@@ -2732,7 +2732,7 @@
   }
 
   .ubuntu-regular-h2 {
-    font-size: 10px;
+    font-size: 18px;
     font-family: "Ubuntu-Regular";
   }
 
@@ -2897,22 +2897,22 @@
   }
 
   .ubuntu-regular-h1 {
-    font-size: 18px;
+    font-size: 28px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h2 {
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h3 {
-    font-size: 10px;
+    font-size: 14px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h4 {
-    font-size: 10px;
+    font-size: 12px;
     font-family: "Ubuntu-Regular";
   }
 
@@ -2929,7 +2929,7 @@
   }
 
   .poppins-regular-h3 {
-    font-size: 10px;
+    font-size: 12px;
     font-family: "Poppins-Regular";
   }
 
@@ -2943,26 +2943,26 @@
   }
 
   .ubuntu-regular-h1 {
-    font-size: 18px;
+    font-size: 26px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h2 {
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h3 {
-    font-size: 10px;
+    font-size: 14px;
     font-family: "Ubuntu-Regular";
   }
 
   .ubuntu-regular-h4 {
-    font-size: 10px;
+    font-size: 12px;
     font-family: "Ubuntu-Regular";
   }
   .ubuntu-regular-h5 {
-    font-size: 8px;
+    font-size: 10px;
     font-family: "Ubuntu-Regular";
   }
 

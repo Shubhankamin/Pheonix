@@ -4,7 +4,7 @@
       <v-col cols="12" class="">
         <h1
           style="text-transform: uppercase"
-          class="text-center text-white mb-2 ubuntu-regular-h1"
+          class="text-center text-white mb-2 pb-2 ubuntu-regular-h1"
         >
           Our programs
         </h1>

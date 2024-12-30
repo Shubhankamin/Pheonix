@@ -10,7 +10,7 @@
         </h1>
       </v-col>
     </v-row>
-    <div class="d-none d-md-flex justify-end mb-5 pr-5">
+    <!-- <div class="d-none d-md-flex justify-end mb-5 pr-5">
       <div class="custom-navigation">
         <v-btn icon @click="slidePrev" class="custom-prev custom-button">
           <v-icon color="#ffb400">mdi-arrow-left</v-icon>
@@ -19,7 +19,7 @@
           <v-icon color="black">mdi-arrow-right</v-icon>
         </v-btn>
       </div>
-    </div>
+    </div> -->
 
     <swiper
       :modules="swiperModules"
@@ -33,10 +33,11 @@
         767: { slidesPerView: 2 },
         320: { slidesPerView: 1 },
       }"
+      loop="true"
       :slides-per-view="3"
       :space-between="10"
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
-      class="mySwiper mb-10 mt-5 mt-md-0"
+      class="mySwiper mb-10 mt-5 mt-md-3"
     >
       <swiper-slide v-for="(item, i) in sliderImages" :key="i">
         <v-img
@@ -81,29 +82,16 @@ const swiperModules = [Autoplay, Navigation];
 
 const sliderImages = [
   {
-    src: "/images/slider-karate.jpeg",
-    name: "name",
-    subName: "subname",
+    src: "/images/masters/mast-3.jpeg",
+    name: "Keerthi G K",
   },
   {
-    src: "/images/slider-karate.jpeg",
-    name: "name",
-    subName: "subname",
+    src: "/images/masters/mast-2.jpg",
+    name: "Vijay Achar",
   },
   {
-    src: "/images/slider-karate.jpeg",
-    name: "name",
-    subName: "subname",
-  },
-  {
-    src: "/images/slider-karate.jpeg",
-    name: "name",
-    subName: "subname",
-  },
-  {
-    src: "/images/slider-karate.jpeg",
-    name: "name",
-    subName: "subname",
+    src: "/images/masters/mast-1.JPG",
+    name: "Rajshejkar",
   },
 ];
 

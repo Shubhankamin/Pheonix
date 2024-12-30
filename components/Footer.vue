@@ -1,37 +1,37 @@
 <template>
   <div>
     <v-container fluid style="background-color: #4f000b">
-      <v-row class="py-10 px-10">
+      <v-row class="py-10 px-10 justify-center" >
         <v-divider
           :thickness="3"
           class="border-opacity-50 mb-5"
           color="white"
         ></v-divider>
-        <v-col cols="12" md="2">
-          <v-img src="/images/logo/logo-foot.svg" />
+        <v-col cols="12" md="2" class="d-flex justify-center px-0 mx-0">
+          <v-img src="/images/logo/logo-pheo-2.png" />
         </v-col>
-        <v-col cols="12" md="2" class="text-white d-flex justify-center">
+        <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
             <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="12" md="2" class="text-white d-flex justify-center">
+        <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
             <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="12" md="2" class="text-white d-flex justify-center">
+        <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
             <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
           </div>
         </v-col>
-        <v-col cols="12" md="2" class="text-white d-flex justify-center">
+        <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
             <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
             <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
@@ -45,7 +45,7 @@
           color="white"
         ></v-divider>
       </v-row>
-      <v-row class="justify-center py-0 my-0">
+      <v-row class="justify-center py-0 my-0 px-0 mx-0">
         <v-col cols="12" class="">
           <p class="text-white mb-2 text-center ubuntu-regular-h2">Social</p>
           <ul class="wrapper">

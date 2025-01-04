@@ -23,7 +23,7 @@
                     <v-img src="/images/hero/hero-2.jpg" cover height="250">
                     </v-img>
                   </v-col>
-                  <v-col class="mx-0 px-0" cols="12" md="5">
+                  <v-col class="mx-0 px-0 d-none d-md-block" cols="12" md="5">
                     <v-img src="/images/hero/hero-2.jpg" cover height="250">
                     </v-img>
                   </v-col>

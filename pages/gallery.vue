@@ -1,27 +1,36 @@
 <template>
   <div>
-    <v-container fluid class="mx-0 px-0">
-      <Nav />
-      <v-row>
-        <v-col>
-          <div class="image-grid">
-            <div
-              v-for="(row, rowIndex) in imageRows"
-              :key="rowIndex"
-              class="image-row"
-            >
-              <div
-                v-for="(image, imageIndex) in row"
-                :key="imageIndex"
-                class="image"
-                :style="{
-                  backgroundImage: `url(${image.url})`,
-                  flex: image.flex,
-                }"
-                @click="show(image, flatImageList, getImageIndex(image))"
-              ></div>
-            </div>
-          </div>
+    <v-container fluid class="">
+      <v-row class="pa-0">
+        <v-col class="pa-0">
+          <Nav />
+          <v-row>
+            <v-col class="px-0">
+              <div class="image-grid">
+                <div
+                  v-for="(row, rowIndex) in imageRows"
+                  :key="rowIndex"
+                  class="image-row"
+                >
+                  <div
+                    v-for="(image, imageIndex) in row"
+                    :key="imageIndex"
+                    class="image"
+                    :style="{
+                      backgroundImage: `url(${image.url})`,
+                      flex: image.flex,
+                    }"
+                    @click="show(image, flatImageList, getImageIndex(image))"
+                  ></div>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="pa-0">
+              <Footer />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -130,15 +139,5 @@ body {
   background-position: center center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15),
     0 6px 20px rgba(0, 0, 0, 0.7);
-}
-
-@media screen and (max-width: 400px) {
-  .image-row {
-    flex-direction: column;
-  }
-
-  .image-row .image {
-    flex-basis: auto;
-  }
 }
 </style>

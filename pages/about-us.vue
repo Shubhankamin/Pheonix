@@ -1,168 +1,164 @@
 <template>
   <div>
-    <v-container fluid class="pa-0 mx-0">
-      <Nav />
+    <v-container fluid class="">
       <v-row>
-        <v-col class="mx-0 px-0" cols="12">
-          <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
-        </v-col>
-        <v-col cols="12" class="mx-0 px-0">
-          <div class="bg-black px-10">
-            <h1 class="ubuntu-regular-h1" style="">ABOUT US</h1>
-          </div>
+        <v-col>
+          <v-row class="py-0 px-0">
+            <v-col class="py-0 px-0" cols="12">
+              <Nav />
+
+              <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
+            </v-col>
+            <v-col cols="12" class="mx-0 px-0">
+              <div class="bg-black px-10">
+                <h1 class="ubuntu-regular-h1" style="">ABOUT US</h1>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="px-0">
+              <div class="px-5 pb-10">
+                <v-row class="ga-10 justify-center">
+                  <v-col class="mx-0 px-0" cols="12" md="5">
+                    <v-img src="/images/hero/hero-2.jpg" cover height="250">
+                    </v-img>
+                  </v-col>
+                  <v-col class="mx-0 px-0" cols="12" md="5">
+                    <v-img src="/images/hero/hero-2.jpg" cover height="250">
+                    </v-img>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="px-4">
+                    <div>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        <b class="text-black"
+                          ><span style="font-size: 35px">P</span>hoenix Academy
+                          India</b
+                        >
+                        cultivates both physical and mental strength through
+                        focused training, promoting concentration, discipline,
+                        and integrity. Participants develop increased
+                        self-confidence, motivation, and team-building skills
+                        while honing speed, coordination, and a strong mind-body
+                        connection.
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        <b class="text-black">Phoenix Academy India</b> has
+                        multiple branches in bangalore such as
+                        <b class="text-black">Belathur-Kadugodi</b>,
+                        <b class="text-black">Channasandra-whitefield</b>,
+                        <b class="text-black">HSR Layout and Hosur road.</b>
+                      </p>
+                    </div>
+                  </v-col>
+                </v-row>
+                <div>
+                  <v-row>
+                    <v-col>
+                      <p class="ubuntu-regular-h1 font-weight-bold text-grey">
+                        OUR MASTERS
+                      </p>
+                      <p class="ubuntu-regular-h2 text-black mt-5">
+                        KEERTHI G K
+                      </p>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="mx-0 px-0 py-0" cols="12" md="3">
+                      <v-img
+                        src="/images/masters/master-3.jpeg"
+                        
+                        height="500"
+                      >
+                      </v-img>
+                    </v-col>
+                    <v-col cols="12" md="6" class="d-flex align-center">
+                      <div>
+                        <p class="ubuntu-regular-h3 text-grey">
+                          Passionate and proficient martial arts instructor with
+                          20 years of expertise in instructing diverse martial
+                          arts styles. Wholeheartedly dedicated to fostering
+                          physical fitness, self- discipline, and personal
+                          growth among students spanning different age groups.
+                          Eagerly pursuing a chance to impart my love for
+                          martial arts and make a valuable impact on the
+                          advancement and triumph of a phoenix martial arts
+                          academy.
+                        </p>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </div>
+
+                <div>
+                  <v-row>
+                    <v-col>
+                      <p class="ubuntu-regular-h2 text-black mt-5">
+                        VIJAY ACHAR
+                      </p>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="mx-0 px-0 py-0" cols="12" md="3">
+                      <v-img
+                        src="/images/masters/mast-2.jpg"
+                        
+                        height="500"
+                      >
+                      </v-img>
+                    </v-col>
+                    <v-col cols="12" md="6" class="d-flex align-center">
+                      <div>
+                        <p class="ubuntu-regular-h3 text-grey">
+                          15 years of Dynamic and results-oriented Karate
+                          Instructor with a wealth of experience and a solid
+                          history of outstanding accomplishments. Skilled in
+                          creating personalized training programs, delivering
+                          exceptional individual and group lessons, tracking
+                          student progress, and executing effective marketing
+                          strategies.
+                        </p>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div>
+                  <v-row>
+                    <v-col>
+                      <p class="ubuntu-regular-h2 text-black mt-5">RAJSHEKAR</p>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="mx-0 px-0 py-0" cols="12" md="3">
+                      <v-img
+                        src="/images/masters/mast-1.JPG"
+                        
+                        height="500"
+                      >
+                      </v-img>
+                    </v-col>
+                    <v-col cols="12" md="6" class="d-flex align-center">
+                      <div>
+                        <p class="ubuntu-regular-h3 text-grey">
+                          10 Years of experience in Assessing and monitoring
+                          students' progress, providing feedback, and setting
+                          goals for skill advancement and belt promotions.
+                          Demonstrating karate techniques and forms to
+                          illustrate proper execution and form. Supervising
+                          sparring sessions and practicing drills to enhance
+                          students' combat skills and self-defense.
+                        </p>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </div>
+              </div>
+              <Footer />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
-      <div class="px-5 pb-10">
-        <v-row>
-          <v-col cols="12">
-            <div>
-              <p class="ubuntu-regular-h3 text-grey">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea
-                iste voluptatem, saepe porro distinctio rem vitae rerum
-                blanditiis incidunt quis delectus, nemo quos dolorem voluptates
-                suscipit, accusamus adipisci hic autem laborum odit labore
-                accusantium? Sapiente tempora nostrum rerum autem at amet
-                mollitia! Aspernatur numquam dolorum aliquam porro similique
-                expedita debitis reprehenderit officia beatae magni fugiat hic,
-                in consequatur. Repellendus voluptas nesciunt dignissimos,
-                aperiam, placeat eos ducimus ex doloremque delectus architecto
-                voluptatum nostrum praesentium inventore quia sint, odio
-                incidunt! Odio distinctio debitis adipisci libero aut veritatis
-                porro nostrum saepe, inventore aperiam, in minus magni impedit
-                quisquam amet. Tempora aperiam minima velit quidem aspernatur
-                libero labore, harum, quo ipsam sint delectus laborum animi
-                pariatur a suscipit numquam! Labore minus veniam laudantium
-                consequuntur deserunt dicta unde quasi beatae provident cumque
-                fugiat assumenda blanditiis, iure soluta velit eius sed ullam
-                delectus enim pariatur aliquam, officiis est odio ipsa!
-                Reiciendis, fuga vero necessitatibus quas deleniti est
-                dignissimos neque, labore sint quaerat culpa, quasi atque
-                inventore delectus fugiat amet similique rem veritatis. Dolorum,
-                animi. Accusamus, commodi amet. Iure, autem! Quas beatae quod
-                ipsum earum voluptatum. Atque amet autem nihil alias excepturi,
-                quae nostrum hic illo. Repellat asperiores quis tempora dolore
-                ea quas sint ex nam, ullam est rerum tempore eaque. Voluptate
-                facilis aut nemo ipsam quisquam dolorem, fugit, veniam ea
-                eligendi eos qui quae aspernatur, adipisci quas nobis animi
-                magnam et neque expedita at quaerat alias laboriosam. Minus
-                nesciunt magnam nisi quasi reprehenderit quidem, dignissimos
-                voluptate ducimus nemo veniam ullam animi obcaecati voluptatem
-                quis tempora delectus aut recusandae, officiis odit ipsam ea
-                natus sequi veritatis? Reprehenderit earum, nobis, error natus
-                ab rerum ratione provident repellat, minus incidunt in unde.
-                Reprehenderit dignissimos alias, nesciunt quam, pariatur quos
-                aliquam distinctio at animi laboriosam accusamus dicta adipisci,
-                fuga tempora nam voluptatum ab. Commodi ab doloribus labore
-                provident voluptas eligendi.
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row class="ga-10 justify-center">
-          <v-col class="mx-0 px-0" cols="12" md="5">
-            <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
-          </v-col>
-          <v-col class="mx-0 px-0" cols="12" md="5">
-            <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
-            <div>
-              <p class="ubuntu-regular-h3 text-grey">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea
-                iste voluptatem, saepe porro distinctio rem vitae rerum
-                blanditiis incidunt quis delectus, nemo quos dolorem voluptates
-                suscipit, accusamus adipisci hic autem laborum odit labore
-                accusantium? Sapiente tempora nostrum rerum autem at amet
-                mollitia! Aspernatur numquam dolorum aliquam porro similique
-                expedita debitis reprehenderit officia beatae magni fugiat hic,
-                in consequatur. Repellendus voluptas nesciunt dignissimos,
-                aperiam, placeat eos ducimus ex doloremque delectus architecto
-                voluptatum nostrum praesentium inventore quia sint, odio
-                incidunt! Odio distinctio debitis adipisci libero aut veritatis
-                porro nostrum saepe, inventore aperiam, in minus magni impedit
-                quisquam amet. Tempora aperiam minima velit quidem aspernatur
-                libero labore, harum, quo ipsam sint delectus laborum animi
-                pariatur a suscipit numquam! Labore minus veniam laudantium
-                consequuntur deserunt dicta unde quasi beatae provident cumque
-                fugiat assumenda blanditiis, iure soluta velit eius sed ullam
-                delectus enim pariatur aliquam, officiis est odio ipsa!
-                Reiciendis, fuga vero necessitatibus quas deleniti est
-                dignissimos neque, labore sint quaerat culpa, quasi atque
-                inventore delectus fugiat amet similique rem veritatis. Dolorum,
-                animi. Accusamus, commodi amet. Iure, autem! Quas beatae quod
-                ipsum earum voluptatum. Atque amet autem nihil alias excepturi,
-                quae nostrum hic illo. Repellat asperiores quis tempora dolore
-                ea quas sint ex nam, ullam est rerum tempore eaque. Voluptate
-                facilis aut nemo ipsam quisquam dolorem, fugit, veniam ea
-                eligendi eos qui quae aspernatur, adipisci quas nobis animi
-                magnam et neque expedita at quaerat alias laboriosam. Minus
-                nesciunt magnam nisi quasi reprehenderit quidem, dignissimos
-                voluptate ducimus nemo veniam ullam animi obcaecati voluptatem
-                quis tempora delectus aut recusandae, officiis odit ipsam ea
-                natus sequi veritatis? Reprehenderit earum, nobis, error natus
-                ab rerum ratione provident repellat, minus incidunt in unde.
-                Reprehenderit dignissimos alias, nesciunt quam, pariatur quos
-                aliquam distinctio at animi laboriosam accusamus dicta adipisci,
-                fuga tempora nam voluptatum ab. Commodi ab doloribus labore
-                provident voluptas eligendi.
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row class="ga-10 justify-center">
-          <v-col class="mx-0 px-0" cols="12">
-            <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
-            <div>
-              <p class="ubuntu-regular-h3 text-grey">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea
-                iste voluptatem, saepe porro distinctio rem vitae rerum
-                blanditiis incidunt quis delectus, nemo quos dolorem voluptates
-                suscipit, accusamus adipisci hic autem laborum odit labore
-                accusantium? Sapiente tempora nostrum rerum autem at amet
-                mollitia! Aspernatur numquam dolorum aliquam porro similique
-                expedita debitis reprehenderit officia beatae magni fugiat hic,
-                in consequatur. Repellendus voluptas nesciunt dignissimos,
-                aperiam, placeat eos ducimus ex doloremque delectus architecto
-                voluptatum nostrum praesentium inventore quia sint, odio
-                incidunt! Odio distinctio debitis adipisci libero aut veritatis
-                porro nostrum saepe, inventore aperiam, in minus magni impedit
-                quisquam amet. Tempora aperiam minima velit quidem aspernatur
-                libero labore, harum, quo ipsam sint delectus laborum animi
-                pariatur a suscipit numquam! Labore minus veniam laudantium
-                consequuntur deserunt dicta unde quasi beatae provident cumque
-                fugiat assumenda blanditiis, iure soluta velit eius sed ullam
-                delectus enim pariatur aliquam, officiis est odio ipsa!
-                Reiciendis, fuga vero necessitatibus quas deleniti est
-                dignissimos neque, labore sint quaerat culpa, quasi atque
-                inventore delectus fugiat amet similique rem veritatis. Dolorum,
-                animi. Accusamus, commodi amet. Iure, autem! Quas beatae quod
-                ipsum earum voluptatum. Atque amet autem nihil alias excepturi,
-                quae nostrum hic illo. Repellat asperiores quis tempora dolore
-                ea quas sint ex nam, ullam est rerum tempore eaque. Voluptate
-                facilis aut nemo ipsam quisquam dolorem, fugit, veniam ea
-                eligendi eos qui quae aspernatur, adipisci quas nobis animi
-                magnam et neque expedita at quaerat alias laboriosam. Minus
-                nesciunt magnam nisi quasi reprehenderit quidem, dignissimos
-                voluptate ducimus nemo veniam ullam animi obcaecati voluptatem
-                quis tempora delectus aut recusandae, officiis odit ipsam ea
-                natus sequi veritatis? Reprehenderit earum, nobis, error natus
-                ab rerum ratione provident repellat, minus incidunt in unde.
-                Reprehenderit dignissimos alias, nesciunt quam, pariatur quos
-                aliquam distinctio at animi laboriosam accusamus dicta adipisci,
-                fuga tempora nam voluptatum ab. Commodi ab doloribus labore
-                provident voluptas eligendi.
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-      </div>
-      <Footer />
     </v-container>
   </div>
 </template>

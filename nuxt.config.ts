@@ -4,7 +4,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
+
   css: ['/assets/css/style.css'],
+
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
@@ -14,6 +16,7 @@ export default defineNuxtConfig({
     },
     //...
   ],
+
   vite: {
     vue: {
       template: {
@@ -21,4 +24,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: "2025-01-01",
 });

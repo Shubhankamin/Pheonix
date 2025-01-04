@@ -1,41 +1,57 @@
 <template>
   <div>
     <v-container fluid style="background-color: #4f000b">
-      <v-row class="py-10 px-10 justify-center" >
+      <v-row class="py-10 px-10 justify-center align-center">
         <v-divider
           :thickness="3"
           class="border-opacity-50 mb-5"
           color="white"
         ></v-divider>
         <v-col cols="12" md="2" class="d-flex justify-center px-0 mx-0">
-          <v-img src="/images/logo/logo-pheo-2.png" />
+          <v-img src="/images/logo/pheo-3.png" @click="gotToHome" style="cursor: pointer;" />
         </v-col>
         <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
+            <p
+              class="ubuntu-regular-h2 footer-item"
+              style="font-weight: 700"
+              @click="gotToHome"
+            >
+              HOME
+            </p>
           </div>
         </v-col>
         <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
+            <p
+              class="ubuntu-regular-h2 footer-item"
+              style="font-weight: 700"
+              @click="goToGallery"
+            >
+              GALLERY
+            </p>
           </div>
         </v-col>
         <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
+            <p
+              class="ubuntu-regular-h2 footer-item"
+              style="font-weight: 700"
+              @click="goToAbout"
+            >
+              ABOUT US
+            </p>
           </div>
         </v-col>
         <v-col cols="6" md="2" class="text-white d-flex justify-center">
           <div>
-            <p class="ubuntu-regular-h2" style="font-weight: 700">ABOUT US</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 1</p>
-            <p class="ubuntu-regular-h3" style="font-weight: 500">section 2</p>
+            <p
+              class="ubuntu-regular-h2 footer-item"
+              style="font-weight: 700"
+              @click="goToContact"
+            >
+              CONTACT US
+            </p>
           </div>
         </v-col>
 
@@ -109,6 +125,24 @@
     </v-container>
   </div>
 </template>
+<script setup>
+const router = useRouter();
+const gotToHome = () => {
+  router.push("/");
+};
+
+const goToGallery = () => {
+  router.push("/gallery");
+};
+
+const goToAbout = () => {
+  router.push("/about-us");
+};
+
+const goToContact = () => {
+  router.push("/contact-us");
+};
+</script>
 <style scoped>
 .wrapper {
   display: inline-flex;
@@ -117,6 +151,11 @@
   width: 100%;
   font-family: "Poppins", sans-serif;
   justify-content: center;
+}
+
+.footer-item:hover {
+  cursor: pointer;
+  color: black;
 }
 
 .wrapper .icon {

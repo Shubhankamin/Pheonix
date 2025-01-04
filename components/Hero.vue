@@ -1,18 +1,18 @@
 <template>
   <div>
-    <v-container fluid class=" px-0">
+    <v-container fluid >
       <v-row>
-        <v-col class="pl-5 " cols="12">
+        <v-col class=" px-0" cols="12">
           <v-img
             src="/images/hero/hero-3.jpg"
             height="70vh"
-            width="100vw"
+           
             cover
           ></v-img>
         </v-col>
       </v-row>
-      <v-row class="px-md-3 px-5 py-0 background-black text-white">
-        <v-col cols="12" md="6">
+      <v-row class="px-md-3 px-5 py-0 background-black text-white mt-2" >
+        <v-col cols="12" md="6" class="">
           <p class="ubuntu-regular-h1 ml-2" style="font-weight: 800">
             CHANGE <br />YOUR LIFE
           </p>

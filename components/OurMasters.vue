@@ -1,16 +1,17 @@
 <template>
-  <div style="background-color: #4f000b">
-    <v-row>
-      <v-col cols="12" class="">
-        <h1
-          style="text-transform: uppercase"
-          class="text-center text-white ubuntu-regular-h1"
-        >
-          SEE OUR MASTERS
-        </h1>
-      </v-col>
-    </v-row>
-    <!-- <div class="d-none d-md-flex justify-end mb-5 pr-5">
+  <div style="background-color: #4f000b" class="mt-2">
+    <v-container fluid>
+      <v-row>
+        <v-col cols="12" class="">
+          <h1
+            style="text-transform: uppercase"
+            class="text-center text-white ubuntu-regular-h1"
+          >
+            SEE OUR MASTERS
+          </h1>
+        </v-col>
+      </v-row>
+      <!-- <div class="d-none d-md-flex justify-end mb-5 pr-5">
       <div class="custom-navigation">
         <v-btn icon @click="slidePrev" class="custom-prev custom-button">
           <v-icon color="#ffb400">mdi-arrow-left</v-icon>
@@ -21,54 +22,55 @@
       </div>
     </div> -->
 
-    <swiper
-      :modules="swiperModules"
-      :pagination="{ clickable: true }"
-      :navigation="true"
-      :loop="true"
-      :breakpoints="{
-        2560: { slidesPerView: 3 },
-        1440: { slidesPerView: 3 },
-        1024: { slidesPerView: 3 },
-        767: { slidesPerView: 2 },
-        320: { slidesPerView: 1 },
-      }"
-      loop="true"
-      :slides-per-view="3"
-      :space-between="10"
-      :autoplay="{ delay: 3000, disableOnInteraction: false }"
-      class="mySwiper mb-10 mt-5 mt-md-3"
-    >
-      <swiper-slide v-for="(item, i) in sliderImages" :key="i">
-        <v-img
-          class="bg-image"
-          height="400"
-          width="100%"
-          style="position: relative"
-          cover
-          :src="item.src"
-        >
-          <v-card
-            style="position: absolute; bottom: 5%; left: 5%"
-            min-width="350"
-            class="px-4 py-2 image-card"
-            elevation="0"
+      <swiper
+        :modules="swiperModules"
+        :pagination="{ clickable: true }"
+        :navigation="true"
+        :loop="true"
+        :breakpoints="{
+          2560: { slidesPerView: 3 },
+          1440: { slidesPerView: 3 },
+          1024: { slidesPerView: 3 },
+          767: { slidesPerView: 2 },
+          320: { slidesPerView: 1 },
+        }"
+        loop="true"
+        :slides-per-view="3"
+        :space-between="10"
+        :autoplay="{ delay: 3000, disableOnInteraction: false }"
+        class="mySwiper mb-2 mt-5 mt-md-3"
+      >
+        <swiper-slide v-for="(item, i) in sliderImages" :key="i">
+          <v-img
+            class="bg-image"
+            height="400"
+            width="100%"
+            style="position: relative"
+            cover
+            :src="item.src"
           >
-            <div class="d-flex justify-space-between">
-              <p
-                style="text-transform: uppercase; color: #ffb400"
-                class="ubuntu-regular-h3"
-              >
-                {{ item.name }}
-              </p>
-              <p style="text-transform: uppercase" class="ubuntu-regular-h3">
-                {{ item.subName }}
-              </p>
-            </div>
-          </v-card>
-        </v-img>
-      </swiper-slide>
-    </swiper>
+            <v-card
+              style="position: absolute; bottom: 5%; right: 2%"
+              min-width="200"
+              class="px-4 py-2 image-card d-flex justify-center"
+              elevation="0"
+            >
+              <div class="d-flex ">
+                <p
+                  style="text-transform: uppercase; color: #ffb400"
+                  class="ubuntu-regular-h3 text-center"
+                >
+                  {{ item.name }}
+                </p>
+                <!-- <p style="text-transform: uppercase" class="ubuntu-regular-h3">
+                  {{ item.subName }}
+                </p> -->
+              </div>
+            </v-card>
+          </v-img>
+        </swiper-slide>
+      </swiper>
+    </v-container>
   </div>
 </template>
 
@@ -82,7 +84,7 @@ const swiperModules = [Autoplay, Navigation];
 
 const sliderImages = [
   {
-    src: "/images/masters/mast-3.jpeg",
+    src: "/images/masters/master-3.jpeg",
     name: "Keerthi G K",
   },
   {

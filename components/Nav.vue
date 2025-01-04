@@ -1,73 +1,152 @@
 <template>
-  <div class="w-100 bg-black">
+  <div class="bg-black">
     <v-container fluid>
       <v-row class="py-0 d-none d-md-flex">
         <v-col cols="3" class="d-flex justify-space-around align-center py-0">
-          <p class="ubuntu-regular-h3">HOME</p>
-          <NuxtLink to="/gallery" style="text-decoration: none; color: white">
+          <p
+            class="ubuntu-regular-h3 hover-red"
+            :class="{ active: route.path === '/' }"
+            @click="gotToHome"
+          >
+            HOME
+          </p>
+          <NuxtLink
+            to="/gallery"
+            style="text-decoration: none"
+            class="hover-red"
+            :class="{ active: route.path === '/gallery' }"
+          >
             <p class="ubuntu-regular-h3">GALLERY</p>
           </NuxtLink>
         </v-col>
-        <!-- <v-col cols="2">
-                    <v-img src="/images/logo/karate-logo-1.png"></v-img>
-                </v-col> -->
         <v-col cols="6" class="d-flex justify-center align-center py-0">
-          <NuxtLink to="/" style="text-decoration: none; color: white">
-            <!-- <v-img src="public/images/logo/logo-pheo-2.png" width="300"></v-img> -->
-            <v-img src="public/images/logo/pheo-3.png" width="100"></v-img>
+          <NuxtLink to="/" style="text-decoration: none">
+            <v-img src="/images/logo/pheo-3.png" width="100"></v-img>
           </NuxtLink>
         </v-col>
         <v-col cols="3" class="d-flex justify-space-around align-center py-0">
-          <NuxtLink to="/about-us" style="text-decoration: none; color: white">
+          <NuxtLink
+            to="/about-us"
+            style="text-decoration: none"
+            class="hover-red"
+            :class="{ active: route.path === '/about-us' }"
+          >
             <p class="ubuntu-regular-h3">ABOUT US</p>
           </NuxtLink>
           <NuxtLink
             to="/contact-us"
-            style="text-decoration: none; color: white"
+            style="text-decoration: none"
+            class="hover-red"
+            :class="{ active: route.path === '/contact-us' }"
           >
             <p class="ubuntu-regular-h3">CONTACT US</p>
           </NuxtLink>
         </v-col>
       </v-row>
+
       <v-row class="pa-0 ma-0 d-flex d-md-none align-center">
         <v-col class="pa-0 ma-0" cols="2" @click="gotToHome">
-          <v-img src="/images/logo/karate-logo-1.png" height="50"></v-img>
+          <v-img src="/images/logo/pheo-3.png" height="50"></v-img>
         </v-col>
         <v-col cols="8">
-          <p class="ubuntu-regular-h2 text-center">PHEONIX KARATE</p>
+          <p class="ubuntu-regular-h2 text-center" @click="gotToHome">
+            PHEONIX ACADEMY
+          </p>
         </v-col>
         <v-col cols="2">
           <v-icon @click="drawer = !drawer">mdi-menu</v-icon>
         </v-col>
       </v-row>
       <v-navigation-drawer v-model="drawer" temporary location="right">
-        <div>
-          <v-img src="/images/logo/karate-logo-1.png" height="100"></v-img>
+        <div class="bg-black">
+          <div>
+            <v-img
+              src="/images/logo/pheo-3.png"
+              height="100"
+              @click="gotToHome"
+            ></v-img>
+          </div>
+
+          <div class="close-btn" style="position: absolute; top: 2%; right: 5%">
+            <v-icon @click="drawer = !drawer">mdi-close</v-icon>
+          </div>
         </div>
 
-        <div class="close-btn" style="position: absolute; top: 2%; right: 5%">
-          <v-icon @click="drawer = !drawer">mdi-close</v-icon>
-        </div>
-
-        <div class="text-center pt-4">
+        <div class="text-center">
           <v-divider :thickness="2"></v-divider>
-
-          <p class="poppins-regular-h2 py-4">Home</p>
+          <p
+            class="poppins-regular-h2 py-4"
+            @click="gotToHome"
+            :class="{ active: route.path === '/' }"
+          >
+            Home
+          </p>
           <v-divider :thickness="2"></v-divider>
-          <p class="poppins-regular-h2 py-4">GALLERY</p>
+          <p
+            class="poppins-regular-h2 py-4"
+            @click="goToGallery"
+            :class="{ active: route.path === '/gallery' }"
+          >
+            GALLERY
+          </p>
           <v-divider :thickness="2"></v-divider>
-          <p class="poppins-regular-h2 py-4">ABOUT US</p>
+          <p
+            class="poppins-regular-h2 py-4"
+            @click="goToAbout"
+            :class="{ active: route.path === '/about-us' }"
+          >
+            ABOUT US
+          </p>
           <v-divider :thickness="2"></v-divider>
-          <p class="poppins-regular-h2 py-4">CONTACT US</p>
+          <p
+            class="poppins-regular-h2 py-4"
+            @click="goToContact"
+            :class="{ active: route.path === '/contact-us' }"
+          >
+            CONTACT US
+          </p>
         </div>
       </v-navigation-drawer>
     </v-container>
   </div>
 </template>
+
 <script setup>
+import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+
 const drawer = ref(false);
-const router = useRouter;
+const router = useRouter();
+const route = useRoute();
+
 const gotToHome = () => {
   router.push("/");
 };
+
+const goToGallery = () => {
+  router.push("/gallery");
+};
+
+const goToAbout = () => {
+  router.push("/about-us");
+};
+
+const goToContact = () => {
+  router.push("/contact-us");
+};
 </script>
+
+<style scoped>
+.hover-red {
+  color: white;
+  cursor: pointer;
+}
+
+.hover-red:hover {
+  color: red;
+}
+
+.active {
+  color: red !important;
+}
+</style>

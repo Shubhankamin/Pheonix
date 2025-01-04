@@ -1,149 +1,224 @@
 <template>
   <div>
-    <v-container fluid class="px-0 mx-0 py-0">
-      <Nav />
-      <v-row class="px-0 ma-0 py-0">
-        <v-col class="mx-0 px-0" cols="12">
-          <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
-        </v-col>
-        <v-col cols="12" class="ma-0 pa-0">
-          <div class="bg-black px-10">
-            <p style="font-weight:700" class="ubuntu-regular-h1">CONTACT US</p>
-          </div>
-        </v-col>
-      </v-row>
-      <v-row class="px-md-10 pt-md-10" data-aos="fade-up">
-        <v-col cols="12" md="6" class="pb-10">
-          <ul class="example-2 pb-5">
-            <li class="icon-content">
-              <a
-                href=""
-                aria-label="LinkedIn"
-                target="_blank"
-                data-social="LinkedIn"
-              >
-                <div class="filled"></div>
-                <v-icon>mdi-linkedin</v-icon>
-              </a>
-              <div class="tooltip">LinkedIn</div>
-            </li>
-            <li class="icon-content">
-              <a
-                href=""
-                aria-label="github"
-                data-social="github"
-                target="_blank"
-              >
-                <div class="filled"></div>
-                <v-icon>mdi-github</v-icon>
-              </a>
-              <div class="tooltip">GitHub</div>
-            </li>
-            <li class="icon-content">
-              <a
-                :href="whatsappLink"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="neon pointer"
-                aria-label="whatsapp"
-                data-social="whatsapp"
-              >
-                <div class="filled"></div>
-                <v-icon>mdi-whatsapp</v-icon>
-              </a>
-              <div class="tooltip">WhatsApp</div>
-            </li>
-            <li class="icon-content">
-              <a
-                href="https://www.instagram.com/"
-                aria-label="Instagram"
-                target="_blank"
-                data-social="instagram"
-              >
-                <div class="filled"></div>
-                <v-icon>mdi-instagram</v-icon>
-              </a>
-              <div class="tooltip">Instagram</div>
-            </li>
-          </ul>
-          <div class="">
-            <div class="mapouter">
-              <div class="gmap_canvas">
-                <iframe
-                  class="gmap_iframe"
-                  frameborder="0"
-                  scrolling="no"
-                  marginheight="0"
-                  marginwidth="0"
-                  src="https://maps.google.com/maps?width=648&amp;height=400&amp;hl=en&amp;q=D.NO 110 Lakshmi Kripa. Indranagar, Udupi. 576101.&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                ></iframe
-                ><a href="https://strandsgame.net/">Strands</a>
+    <v-container fluid class="py-0">
+      <v-row>
+        <v-col class="px-0 mx-0">
+          <v-row class="py-0 px-0 py-0">
+            <v-col class="px-0 mx-0" cols="12">
+              <Nav />
+<div class="cover-image">
+
+</div>
+            </v-col>
+            <v-col cols="12" class="px-0 py-0">
+              <div class="bg-black px-5 py-2">
+                <p style="font-weight: 700" class="ubuntu-regular-h1">
+                  CONTACT US
+                </p>
               </div>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="12" md="6">
-          <form
-            action="https://formsubmit.co/shubhankamin20@gmail.com"
-            method="POST"
-          >
-            <div>
-              <p class="pb-5 ubuntu-regular-h3">Name</p>
+            </v-col>
+          </v-row>
+          <v-row class="px-md-10 pt-md-10" data-aos="fade-up">
+            <v-col cols="12" md="6" class="pb-10">
+              <ul class="example-2 pb-5">
+                <li class="icon-content">
+                  <a
+                    href=""
+                    aria-label="LinkedIn"
+                    target="_blank"
+                    data-social="LinkedIn"
+                  >
+                    <div class="filled"></div>
+                    <v-icon>mdi-linkedin</v-icon>
+                  </a>
+                  <div class="tooltip">LinkedIn</div>
+                </li>
+                <li class="icon-content">
+                  <a
+                    href=""
+                    aria-label="github"
+                    data-social="github"
+                    target="_blank"
+                  >
+                    <div class="filled"></div>
+                    <v-icon>mdi-github</v-icon>
+                  </a>
+                  <div class="tooltip">GitHub</div>
+                </li>
+                <li class="icon-content">
+                  <a
+                    :href="whatsappLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="neon pointer"
+                    aria-label="whatsapp"
+                    data-social="whatsapp"
+                  >
+                    <div class="filled"></div>
+                    <v-icon>mdi-whatsapp</v-icon>
+                  </a>
+                  <div class="tooltip">WhatsApp</div>
+                </li>
+                <li class="icon-content">
+                  <a
+                    href="https://www.instagram.com/"
+                    aria-label="Instagram"
+                    target="_blank"
+                    data-social="instagram"
+                  >
+                    <div class="filled"></div>
+                    <v-icon>mdi-instagram</v-icon>
+                  </a>
+                  <div class="tooltip">Instagram</div>
+                </li>
+              </ul>
+              <div class="">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                    <iframe
+                      class="gmap_iframe"
+                      frameborder="0"
+                      scrolling="no"
+                      marginheight="0"
+                      marginwidth="0"
+                      :src="currentMapSrc"
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <v-row>
+                  <v-col cols="12" v-for="(address, index) in addresses" :key="index">
+                    <div
+                      :class="['address-div', { 'selected': selectedAddressIndex === index }]"
+                      @click="selectAddress(index)"
+                    >
+                      <p class="d-flex align-center ga-2">
+                        <v-icon>mdi-map-marker</v-icon>
+                        <div>
+                          <span class="ubuntu-regular-h3">Address: &nbsp;</span>
+                          <span class="ubuntu-regular-h3">{{ address.text }}</span>
+                        </div>
+                      </p>
+                    </div>
+                  </v-col>
+                </v-row>
+              </div>
+            </v-col>
+            <v-col cols="12" md="6" class="px-10 px-md-5">
+              <form
+                action="https://formsubmit.co/shubhankamin20@gmail.com"
+                method="POST"
+              >
+                <div>
+                  <p class="pb-5 ubuntu-regular-h3">Name</p>
 
-              <input
-                placeholder="Enter your Name"
-                class="input w-100 py-1"
-                type="text"
-                name="name"
-              />
-            </div>
-            <div>
-              <p class="py-5 ubuntu-regular-h3">Email</p>
+                  <input
+                    placeholder="Enter your Name"
+                    class="input w-100 py-1"
+                    type="text"
+                    name="name"
+                  />
+                </div>
+                <div>
+                  <p class="py-5 ubuntu-regular-h3">Email</p>
 
-              <input
-                class="input w-100 py-1"
-                type="email"
-                placeholder="Enter Email"
-                name="email"
-              />
-            </div>
-            <div>
-              <p class="py-5 ubuntu-regular-h3">Subject</p>
+                  <input
+                    class="input w-100 py-1"
+                    type="email"
+                    placeholder="Enter Email"
+                    name="email"
+                  />
+                </div>
+                <div>
+                  <p class="py-5 ubuntu-regular-h3">Subject</p>
 
-              <input
-                class="input w-100 py-1"
-                placeholder=" Enter Subject"
-                name="subject"
-              />
-            </div>
-            <div>
-              <p class="py-5 ubuntu-regular-h3">Message</p>
+                  <input
+                    class="input w-100 py-1"
+                    placeholder=" Enter Subject"
+                    name="subject"
+                  />
+                </div>
+                <div>
+                  <p class="py-5 ubuntu-regular-h3">Message</p>
 
-              <textarea
-                class="input w-100"
-                placeholder="Message"
-                name="message"
-              />
-            </div>
-            <input type="hidden" name="_captcha" value="false" />
-            <button class="submit py-2 px-12 mt-16 ubuntu-regular-h3">
-              Submit
-            </button>
-          </form>
+                  <textarea
+                    class="input w-100"
+                    placeholder="Message"
+                    name="message"
+                  />
+                </div>
+                <input type="hidden" name="_captcha" value="false" />
+                <button
+                  class="submit py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3"
+                >
+                  Submit
+                </button>
+              </form>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="pa-0">
+              <Footer />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
-      <Footer />
     </v-container>
   </div>
 </template>
 <script setup>
 const whatsappLink = "https://wa.me/973183726";
+const addresses = ref([
+  {
+    text: "Belathur-Kadugodi",
+    mapSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5673550784536!2d77.75019304044993!3d12.999500787371248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0f0017e1aaad%3A0x134ff725f8ffb1fb!2sBelathur!5e0!3m2!1sen!2sin!4v1735978887710!5m2!1sen!2sin" 
+  },
+  {
+    text: "Channasandra-whitefield",
+    mapSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.834666807302!2d77.75492764044974!3d12.982424387386711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0e0f5bb6cd77%3A0x9c2ad8af90920046!2sWhitefield%20Global%20School!5e0!3m2!1sen!2sin!4v1735978947926!5m2!1sen!2sin" 
+  },
+  {
+    text: " HSR Layout and Hosur road",
+    mapSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.844028490846!2d77.66404964044807!3d12.853348687503495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14494a8943f7%3A0x768d0f9874c48675!2sHosur%20Rd%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1735979047830!5m2!1sen!2sin" 
+  },
+]);
+
+const selectedAddressIndex = ref(null); // Index of selected address
+const currentMapSrc = ref(addresses.value[0].mapSrc); // Default map source
+
+// Function to handle address selection
+const selectAddress = (index) => {
+  selectedAddressIndex.value = index;
+  currentMapSrc.value = addresses.value[index].mapSrc; // Update map source
+};
 </script>
 
 <style scoped>
 .heading {
   text-transform: uppercase;
 }
+
+.cover-image{
+  background-position-y: center;
+  background-image: url("/images/hero/hero-2.jpg");
+  height: 40vh;
+}
+.address-div {
+  border: 1px solid red;
+  width: 50%;
+  margin-top: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.address-div.selected {
+  background-color: rgba(128, 128, 128, 0.192); /* Grey with 50% opacity */
+}
+
 .neon {
   color: #d3f576;
 }

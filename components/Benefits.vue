@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid class="background-red">
+    <v-container fluid class="background-red mt-1" >
       <v-row>
         <v-col cols="12" class="">
           <p
@@ -18,7 +18,7 @@
         <v-col
           cols="12"
           md="6"
-          class="confidence-section pl-10 d-flex flex-column justify-space-between pt-5"
+          class="confidence-section pl-md-10 d-flex flex-column justify-space-between pt-5"
         >
           <div
             v-for="(content, index) in contents"

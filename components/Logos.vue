@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-container fluid class="pt-16 mt-8" >
-      <v-row class="pt-12">
-        <v-col cols="12 bg-black ">
+    <v-container fluid class=" pb-md-2 pb-1 mt-md-0 " >
+      <v-row class=" pt-md-0">
+        <v-col cols="12 bg-black">
           <swiper
             :modules="swiperModules"
             :pagination="{ clickable: true }"

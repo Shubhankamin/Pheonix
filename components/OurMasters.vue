@@ -55,16 +55,16 @@
               class="px-4 py-2 image-card d-flex justify-center"
               elevation="0"
             >
-              <div class="d-flex ">
+              <div class="d-flex ga-5">
                 <p
                   style="text-transform: uppercase; color: #ffb400"
-                  class="ubuntu-regular-h3 text-center"
+                  class="ubuntu-regular-h3"
                 >
                   {{ item.name }}
                 </p>
-                <!-- <p style="text-transform: uppercase" class="ubuntu-regular-h3">
+                <p style="text-transform: uppercase" class="ubuntu-regular-h3">
                   {{ item.subName }}
-                </p> -->
+                </p>
               </div>
             </v-card>
           </v-img>
@@ -86,14 +86,17 @@ const sliderImages = [
   {
     src: "/images/masters/master-3.jpeg",
     name: "Keerthi G K",
+    subName: "5th Dan Black Belt",
   },
   {
     src: "/images/masters/mast-2.jpg",
     name: "Vijay Achar",
+    subName: "3rd Dan Black Belt",
   },
   {
     src: "/images/masters/mast-1.JPG",
     name: "Rajshejkar",
+    subName: "5rd Dan Black Belt",
   },
 ];
 

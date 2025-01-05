@@ -46,8 +46,8 @@
                       <p class="ubuntu-regular-h3 text-grey">
                         <b class="text-black">Phoenix Academy India</b> has
                         multiple branches in bangalore such as
-                        <b class="text-black">Belathur-Kadugodi</b>,
-                        <b class="text-black">Channasandra-whitefield</b>,
+                        <b class="text-black">Belathur-Kadugodi,</b>
+                        <b class="text-black">Channasandra-whitefield,</b>
                         <b class="text-black">HSR Layout and Hosur road.</b>
                       </p>
                     </div>
@@ -61,6 +61,16 @@
                       </p>
                       <p class="ubuntu-regular-h2 text-black mt-5">
                         KEERTHI G K
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        President of PHOENIX ACADEMY INDIA
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        TOURNAMENT COMMISSION SECRETARY-KIO
+                      </p>
+
+                      <p class="ubuntu-regular-h3 text-grey">
+                        4th Dan Black Belt(WKF) <br />5th Dan Black Belt
                       </p>
                     </v-col>
                   </v-row>
@@ -93,6 +103,9 @@
                       <p class="ubuntu-regular-h2 text-black mt-5">
                         VIJAY ACHAR
                       </p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        Black belt 3rd Dan
+                      </p>
                     </v-col>
                   </v-row>
                   <v-row>
@@ -119,6 +132,9 @@
                   <v-row>
                     <v-col>
                       <p class="ubuntu-regular-h2 text-black mt-5">RAJSHEKAR</p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        Black belt 3rd Dan
+                      </p>
                     </v-col>
                   </v-row>
                   <v-row>

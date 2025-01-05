@@ -32,12 +32,13 @@
             class="bg-image"
             height="400"
             width="100%"
-            style="position: relative"
+            style="position: relative; object-position: top;"
             cover
+
             :src="item.src"
           >
             <v-card
-              style="position: absolute; bottom: 5%; left: 5%"
+              style="position: absolute; bottom: 5%; right: 5% ; left: 5%;"
               min-width="300"
               class="px-4 py-2 image-card"
               elevation="0"
@@ -68,34 +69,24 @@ const swiperModules = [Autoplay];
 
 const sliderImages = [
   {
-    src: "/images/slider-karate.jpeg",
-    title: "Private Lessons",
-    description: "View your current schedule",
-    description2: "Today!! Check out now",
+    src: "/images/prog-4.jpeg",
+    title: "Monthly 8 Class",
+    description:
+      "Stay consistent and dedicated in your martial arts journey with 8 expertly designed karate classes offered every month.",
   },
+
   {
-    src: "/images/slider-karate.jpeg",
-    title: "Wallowing Breeze",
-    description: "View your current schedule",
-    description2: "Today!! Check out now",
+    src: "/images/prog-4.jpeg",
+    title: "Saturday 10-11",
+    description:
+      "Kickstart your weekend with karate training every Saturday from 10 to 11 AM.",
   },
+
   {
-    src: "/images/slider-karate.jpeg",
-    title: "Private Lessons",
-    description: "View your current schedule",
-    description2: "Today!! Check out now",
-  },
-  {
-    src: "/images/slider-karate.jpeg",
-    title: "Special Offers",
-    description: "View your current schedule",
-    description2: "Today!! Check out now",
-  },
-  {
-    src: "/images/slider-karate.jpeg",
-    title: "Current Schedule",
-    description: "View your current schedule",
-    description2: "Today!! Check out now",
+    src: "/images/prog-4.jpeg",
+    title: "Sunday 10-11",
+    description:
+      "Wrap up your weekend with a dynamic karate session every Sunday, 10 to 11 AM.",
   },
 ];
 </script>
@@ -138,6 +129,7 @@ const sliderImages = [
 .image-card {
   background-color: #333344;
   color: white;
+
 }
 
 .recent {

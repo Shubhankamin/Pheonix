@@ -14,7 +14,7 @@
         </v-col>
         <v-col cols="12" md="6" class="py-0 my-0 py-md-2">
           <p class="my-2 ubuntu-regular-h3">
-            Pheonix Academy provide Karate training fot Physical , Mental and
+            Pheonix Academy provide Karate training for Physical , Mental and
             Self-defence .Karate training can help develop
             strength,speed,agility and endurance.
           </p>

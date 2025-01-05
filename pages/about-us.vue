@@ -65,8 +65,13 @@
                       <p class="ubuntu-regular-h3 text-grey">
                         President of PHOENIX ACADEMY INDIA
                       </p>
+
                       <p class="ubuntu-regular-h3 text-grey">
                         TOURNAMENT COMMISSION SECRETARY-KIO
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey">
+                        Chief Representative of Seiko Kai Karate International
+                        India Karnataka
                       </p>
 
                       <p class="ubuntu-regular-h3 text-grey">
@@ -76,8 +81,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img src="/images/masters/master-3.jpeg" height="500">
-                      </v-img>
+                      <v-img src="/images/masters/master-3.jpeg" cover> </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
                       <div>
@@ -96,7 +100,10 @@
                     </v-col>
                   </v-row>
                 </div>
-
+                <v-divider
+                  :thickness="3"
+                  class="border-opacity-50 mt-5 mt-md-10"
+                ></v-divider>
                 <div>
                   <v-row>
                     <v-col>
@@ -110,8 +117,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img src="/images/masters/mast-2.jpg" height="500">
-                      </v-img>
+                      <v-img src="/images/masters/mast-2.jpg" cover> </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
                       <div>
@@ -128,6 +134,10 @@
                     </v-col>
                   </v-row>
                 </div>
+                <v-divider
+                  :thickness="3"
+                  class="border-opacity-50 mt-5 mt-md-10"
+                ></v-divider>
                 <div>
                   <v-row>
                     <v-col>
@@ -139,8 +149,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img src="/images/masters/mast-1.JPG" height="500">
-                      </v-img>
+                      <v-img src="/images/masters/mast-1.JPG" cover> </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
                       <div>

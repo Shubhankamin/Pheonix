@@ -43,7 +43,7 @@
                     <div class="filled"></div>
                     <v-icon>mdi-facebook</v-icon>
                   </a>
-                  <div class="tooltip">GitHub</div>
+                  <div class="tooltip">Facebook</div>
                 </li>
                 <li class="icon-content">
                   <a

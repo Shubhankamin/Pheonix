@@ -23,6 +23,7 @@
           767: { slidesPerView: 2 },
           320: { slidesPerView: 1 },
         }"
+        loop="true"
         :space-between="10"
         :autoplay="{ delay: 3000, disableOnInteraction: false }"
         class="mySwiper mb-5"
@@ -32,13 +33,12 @@
             class="bg-image"
             height="400"
             width="100%"
-            style="position: relative; object-position: top;"
+            style="position: relative; object-position: top"
             cover
-
             :src="item.src"
           >
             <v-card
-              style="position: absolute; bottom: 5%; right: 5% ; left: 5%;"
+              style="position: absolute; bottom: 5%; right: 5%; left: 5%"
               min-width="300"
               class="px-4 py-2 image-card"
               elevation="0"
@@ -129,7 +129,6 @@ const sliderImages = [
 .image-card {
   background-color: #333344;
   color: white;
-
 }
 
 .recent {

@@ -132,7 +132,7 @@
       </v-row>
       <v-row class="justify-center py-0 my-0">
         <v-col cols="6">
-          <p class="text-center text-white ubuntu-regular-h3">
+          <p class="text-center text-white ubuntu-regular-h3 ">
             © 2024 Lift Media | All Rights Reserved
           </p>
         </v-col>

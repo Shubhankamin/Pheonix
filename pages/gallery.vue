@@ -38,6 +38,15 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: "GALLERY | PHEONIX ACADEMY",
+  ogTitle: "GALLERY | PHEONIX ACADEMY",
+  description: "where timeless craftsmanship meets unmatched purity",
+  ogDescription: "where timeless craftsmanship meets unmatched purity",
+  ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
+  twitterCard: "summary_large_image",
+});
+
 import { api as viewerApi } from "v-viewer";
 import "viewerjs/dist/viewer.css";
 import { ref, computed } from "vue";

@@ -66,11 +66,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img
-                        src="/images/masters/master-3.jpeg"
-                        
-                        height="500"
-                      >
+                      <v-img src="/images/masters/master-3.jpeg" height="500">
                       </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
@@ -101,11 +97,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img
-                        src="/images/masters/mast-2.jpg"
-                        
-                        height="500"
-                      >
+                      <v-img src="/images/masters/mast-2.jpg" height="500">
                       </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
@@ -131,11 +123,7 @@
                   </v-row>
                   <v-row>
                     <v-col class="mx-0 px-0 py-0" cols="12" md="3">
-                      <v-img
-                        src="/images/masters/mast-1.JPG"
-                        
-                        height="500"
-                      >
+                      <v-img src="/images/masters/mast-1.JPG" height="500">
                       </v-img>
                     </v-col>
                     <v-col cols="12" md="6" class="d-flex align-center">
@@ -162,3 +150,13 @@
     </v-container>
   </div>
 </template>
+<script setup>
+useSeoMeta({
+  title: "ABOUT US | PHEONIX ACADEMY",
+  ogTitle: "ABOUT US | PHEONIX ACADEMY",
+  description: "where timeless craftsmanship meets unmatched purity",
+  ogDescription: "where timeless craftsmanship meets unmatched purity",
+  ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
+  twitterCard: "summary_large_image",
+});
+</script>

@@ -1,17 +1,12 @@
 <template>
   <div>
-    <v-container fluid >
+    <v-container fluid>
       <v-row>
-        <v-col class=" px-0" cols="12">
-          <v-img
-            src="/images/hero/hero-3.jpg"
-            height="70vh"
-           
-            cover
-          ></v-img>
+        <v-col class="px-0" cols="12">
+          <v-img src="/images/hero/hero-3.jpg" height="70vh" cover></v-img>
         </v-col>
       </v-row>
-      <v-row class="px-md-3 px-5 py-0 background-black text-white mt-2" >
+      <v-row class="px-md-3 px-5 py-0 background-black text-white mt-2">
         <v-col cols="12" md="6" class="">
           <p class="ubuntu-regular-h1 ml-2" style="font-weight: 800">
             CHANGE <br />YOUR LIFE
@@ -19,16 +14,17 @@
         </v-col>
         <v-col cols="12" md="6" class="py-0 my-0 py-md-2">
           <p class="my-2 ubuntu-regular-h3">
-            A gentle art karate kick florida, we believe that karate kick
-            training can help every child and adult develop mental and physical
-            skills they need to succeed in life.
+            Pheonix Academy provide Karate training fot Physical , Mental and
+            Self-defence .Karate training can help develop
+            strength,speed,agility and endurance.
           </p>
-          <button
-            class="custom-button mt-md-10 mb-0 mb-5 mt-5 ubuntu-regular-h3"
-            @click="goToContacts"
-          >
-            CONTACT NOW
-          </button>
+          <a href="https://wa.me/9686860582" target="_blank">
+            <button
+              class="custom-button mt-md-10 mb-0 mb-5 mt-5 ubuntu-regular-h3"
+            >
+              CONTACT NOW
+            </button>
+          </a>
         </v-col>
       </v-row>
     </v-container>
@@ -36,9 +32,10 @@
 </template>
 <script setup>
 const router = useRouter();
-const goToContacts = () => {
-  router.push("/contact-us");
-};
+// const goToContacts = () => {
+//   router.push("/contact-us");
+// };
+const whatsappLink = "https://wa.me/9686860582";
 </script>
 <style scoped>
 .custom-button {

@@ -23,7 +23,7 @@
               <ul class="example-2 pb-5">
                 <li class="icon-content">
                   <a
-                    href=""
+                    href="https://www.linkedin.com/in/vijay-achari-419b4415?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                     aria-label="LinkedIn"
                     target="_blank"
                     data-social="LinkedIn"
@@ -35,13 +35,13 @@
                 </li>
                 <li class="icon-content">
                   <a
-                    href=""
+                    href="https://www.facebook.com/share/1EgdDCL2mp/"
                     aria-label="github"
                     data-social="github"
                     target="_blank"
                   >
                     <div class="filled"></div>
-                    <v-icon>mdi-github</v-icon>
+                    <v-icon>mdi-facebook</v-icon>
                   </a>
                   <div class="tooltip">GitHub</div>
                 </li>
@@ -61,7 +61,7 @@
                 </li>
                 <li class="icon-content">
                   <a
-                    href="https://www.instagram.com/"
+                    href="https://www.instagram.com/vachar80/profilecard/?igsh=MTlqZzFva29raTFvZg=="
                     aria-label="Instagram"
                     target="_blank"
                     data-social="instagram"
@@ -107,7 +107,7 @@
             </v-col>
             <v-col cols="12" md="6" class="px-10 px-md-5">
               <form
-                action="https://formsubmit.co/shubhankamin20@gmail.com"
+                action="https://formsubmit.co/vijh45@gmail.com"
                 method="POST"
               >
                 <div>
@@ -168,7 +168,17 @@
   </div>
 </template>
 <script setup>
-const whatsappLink = "https://wa.me/973183726";
+
+useSeoMeta({
+  title: "CONTACT US | PHEONIX ACADEMY",
+  ogTitle: "CONTACT US | PHEONIX ACADEMY",
+  description: "where timeless craftsmanship meets unmatched purity",
+  ogDescription: "where timeless craftsmanship meets unmatched purity",
+  ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
+  twitterCard: "summary_large_image",
+});
+
+const whatsappLink = "https://wa.me/9686860582";
 const addresses = ref([
   {
     text: "Belathur-Kadugodi",

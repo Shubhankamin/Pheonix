@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     },
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
-
     //...
   ],
 

@@ -96,7 +96,7 @@ const sliderImages = [
   {
     src: "/images/masters/mast-1.JPG",
     name: "Rajshejkar",
-    subName: "5rd Dan Black Belt",
+    subName: "3rd Dan Black Belt",
   },
 ];
 

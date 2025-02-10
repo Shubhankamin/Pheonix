@@ -1,18 +1,28 @@
 <template>
-  <div class="admin-panel">
+  <v-container class="admin-panel">
     <h2>Admin Panel</h2>
-    <input type="file" @change="handleFileUpload" />
-    <button @click="uploadImage" :disabled="loading">Upload</button>
-    <div class="gallery">
-      <img v-for="image in images" :src="image" :key="image" />
-    </div>
-    <button @click="logout">Logout</button>
-  </div>
+    <v-file-input label="Upload Image" @change="handleFileUpload" />
+    <v-btn @click="uploadImage" :loading="loading" color="primary"
+      >Upload</v-btn
+    >
+
+    <v-container class="gallery">
+      <v-row>
+        <v-col v-for="image in images" :key="image" cols="12" md="4">
+          <v-card>
+            <v-img :src="image" height="200px"></v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-btn @click="logout" color="error">Logout</v-btn>
+  </v-container>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { supabase } from "~/utils/supabase";
+import { supabase } from "~/utils/supabase"; // Manually import Supabase
 import { useCookie, navigateTo } from "#app";
 
 const images = ref<string[]>([]);
@@ -28,22 +38,38 @@ const handleFileUpload = (event: Event): void => {
 const uploadImage = async (): Promise<void> => {
   if (!file.value) return;
   loading.value = true;
+
   const fileName = `${Date.now()}-${file.value.name}`;
+  const BUCKET_NAME = "pheonix"; // Ensure this matches your Supabase bucket
+
   const { data, error } = await supabase.storage
-    .from("gallery")
+    .from(BUCKET_NAME)
     .upload(fileName, file.value);
+
+  if (error) {
+    loading.value = false;
+    console.error("Upload error:", error.message);
+    return alert(error.message);
+  }
+
+  const publicUrl = supabase.storage.from(BUCKET_NAME).getPublicUrl(fileName);
+  images.value.push(publicUrl.publicUrl);
   loading.value = false;
-  if (error) return alert(error.message);
-  const { publicURL } = supabase.storage.from("gallery").getPublicUrl(fileName);
-  images.value.push(publicURL);
 };
 
+
 const fetchImages = async (): Promise<void> => {
-  const { data, error } = await supabase.storage.from("gallery").list();
-  if (error) return;
-  images.value = data.map(
-    (img) => supabase.storage.from("gallery").getPublicUrl(img.name).publicURL
-  );
+  const BUCKET_NAME = "pheonix";
+  const S3_BASE_URL = "https://nacxpfuwluqkropjezyu.supabase.co/storage/v1/s3";
+
+  const { data, error } = await supabase.storage.from(BUCKET_NAME).list();
+  if (error) {
+    console.error("Error fetching images:", error.message);
+    return;
+  }
+
+  images.value = data.map((img) => `${S3_BASE_URL}/${img.name}`);
+  console.log(images.value, "feyched images");
 };
 
 const logout = async (): Promise<void> => {

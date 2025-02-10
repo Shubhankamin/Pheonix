@@ -63,6 +63,7 @@ import { ref } from "vue";
 import { supabase } from "~/utils/supabase";
 import { useCookie, navigateTo } from "#app";
 
+
 const email = ref<string>("");
 const password = ref<string>("");
 const loading = ref<boolean>(false);

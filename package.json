@@ -13,6 +13,7 @@
     "@mdi/font": "^7.4.47",
     "@nuxtjs/robots": "^5.1.0",
     "@nuxtjs/sitemap": "^7.0.1",
+    "@nuxtjs/supabase": "^1.4.6",
     "nuxt": "^3.13.0",
     "nuxt-robots": "^2.0.1",
     "nuxt-swiper": "^1.2.2",

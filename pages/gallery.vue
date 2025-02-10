@@ -131,6 +131,7 @@ body {
 
 .image-row {
   display: flex;
+  
 }
 
 .image-row .image {

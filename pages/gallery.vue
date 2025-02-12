@@ -19,6 +19,7 @@
                     :style="{
                       backgroundImage: `url(${image.url})`,
                       flex: image.flex,
+                      backgroundPositionY: top,
                     }"
                     @click="show(image, flatImageList, getImageIndex(image))"
                   ></div>
@@ -82,30 +83,31 @@ const getImageIndex = (image) =>
 
 const imageRows = [
   [
-    { url: "/images/hero/hero-2.jpg", flex: 1 },
-    { url: "/images/kid-karate.jpeg", flex: 1 },
-    { url: "/images/slider-karate.jpeg", flex: 2 },
+    { url: "/images/gallery/gal-1.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-2.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-3.jpeg", flex: 1 },
   ],
   [
     {
-      url: "https://images.unsplash.com/photo-1568602048381-2285db7095c6?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+      url: "/images/gallery/gal-4.jpeg",
       flex: 1,
     },
-    { url: "/images/hero/hero-1.jpg", flex: 2 },
+    { url: "/images/gallery/gal-5.jpeg", flex: 1 },
   ],
   [
-    { url: "/images/slider-karate.jpeg", flex: 2 },
-    { url: "/images/hero/hero-1.jpg", flex: 1 },
-    { url: "/images/hero/hero-2.jpg", flex: 3 },
-    { url: "/images/slider-karate.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-6.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-7.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-8.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-9.jpeg", flex: 1 },
   ],
   [
-    { url: "/images/hero/hero-1.jpg", flex: 1 },
+    { url: "/images/gallery/gal-10.jpeg", flex: 1 },
     {
-      url: "https://images.unsplash.com/photo-1616418672515-1c2b39e219d3?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE5N3w2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      url: "/images/gallery/gal-11.jpeg",
       flex: 1,
     },
-    { url: "/images/slider-karate.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-12.jpeg", flex: 1 },
+    { url: "/images/gallery/gal-13.jpeg", flex: 1 },
   ],
 ];
 </script>
@@ -135,7 +137,9 @@ body {
 
 .image-row .image {
   margin: 12px;
-  height: 240px;
+  height: 270px;
+  background-size: cover;
+  background-position-y: center;
 }
 
 .image {

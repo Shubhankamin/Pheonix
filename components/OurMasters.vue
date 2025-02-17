@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #4f000b" class="mt-2">
+  <div style="background-color: #4f000b" class="mt-1">
     <v-container fluid>
       <v-row>
         <v-col cols="12" class="">

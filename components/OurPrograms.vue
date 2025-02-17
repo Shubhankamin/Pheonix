@@ -36,6 +36,7 @@
             style="position: relative; object-position: top"
             cover
             :src="item.src"
+            :lazy-src="item.src"
           >
             <v-card
               style="position: absolute; bottom: 5%; right: 5%; left: 5%"

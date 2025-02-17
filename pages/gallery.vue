@@ -43,6 +43,39 @@
           </v-row>
         </v-col>
       </v-row>
+        <v-row class="pa-0">
+        <v-col class="pa-0">
+          <Nav />
+          <v-row>
+            <v-col class="px-0">
+              <div class="image-grid">
+                <div
+                  v-for="(row, rowIndex) in imageRows"
+                  :key="rowIndex"
+                  class="image-row"
+                >
+                  <div
+                    v-for="(image, imageIndex) in row"
+                    :key="imageIndex"
+                    class="image"
+                    :style="{
+                      backgroundImage: `url(${image.url})`,
+                      flex: image.flex,
+                      backgroundPositionY: top,
+                    }"
+                    @click="show(image, flatImageList, getImageIndex(image))"
+                  ></div>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="pa-0">
+              <Footer />
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

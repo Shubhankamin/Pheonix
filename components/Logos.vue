@@ -26,6 +26,7 @@
                 style="position: relative"
                 cover
                 :src="item.src"
+                :lazy-src="item.src"
               >
               </v-img>
             </swiper-slide>

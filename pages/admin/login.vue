@@ -5,10 +5,10 @@
   >
     <v-container fluid>
       <v-row class="justify-center">
-        <v-col cols="6">
+        <v-col cols="12" md="6">
           <v-card class="card text-white">
             <v-row class="justify-center pt-5">
-              <v-col cols="4">
+              <v-col cols="10" md="4" class="d-flex justify-center">
                 <v-img src="/images/logo/logo-pheo-2.png"></v-img>
               </v-col>
             </v-row>

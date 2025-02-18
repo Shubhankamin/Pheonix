@@ -16,19 +16,28 @@
       </v-row>
     </v-container>
 
-    <v-btn @click="logout" color="error">Logout</v-btn>
+    <v-btn @click="handleLogout" color="error">Logout</v-btn>
   </v-container>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { supabase } from "~/utils/supabase"; // Manually import Supabase
-import { useCookie, navigateTo } from "#app";
+import { useAuth } from "~/composables/auth";
+import { useNuxtApp, useCookie, useRouter } from "#app";
 
+import { createClient } from "@supabase/supabase-js";
+const config = useRuntimeConfig();
+const key = config.public.supaBaseKey;
+const bkUrl = config.public.supaBaseUrl;
+const supabaseUrl = bkUrl;
+const supabaseKey = key;
+const supabase = createClient(supabaseUrl, supabaseKey);
 const images = ref<string[]>([]);
 const file = ref<File | null>(null);
 const loading = ref<boolean>(false);
 const user = useCookie<any>("user");
+const { logout } = useAuth();
+const router = useRouter();
 
 const handleFileUpload = (event: Event): void => {
   const target = event.target as HTMLInputElement;
@@ -40,9 +49,9 @@ const uploadImage = async (): Promise<void> => {
   loading.value = true;
 
   const fileName = `${Date.now()}-${file.value.name}`;
-  const BUCKET_NAME = "pheonix"; // Ensure this matches your Supabase bucket
+  const BUCKET_NAME = "pheonix";
 
-  const { data, error } = await supabase.storage
+  const { error } = await supabase?.storage
     .from(BUCKET_NAME)
     .upload(fileName, file.value);
 
@@ -52,15 +61,15 @@ const uploadImage = async (): Promise<void> => {
     return alert(error.message);
   }
 
-  const publicUrl = supabase.storage.from(BUCKET_NAME).getPublicUrl(fileName);
-  images.value.push(publicUrl.publicUrl);
+  // Fetch the new image URL and add it to the images list
+  const { data } = supabase.storage.from(BUCKET_NAME).getPublicUrl(fileName);
+  images.value.unshift(data.publicUrl); // Add newly uploaded image to the start of the array
+
   loading.value = false;
 };
 
-
 const fetchImages = async (): Promise<void> => {
   const BUCKET_NAME = "pheonix";
-  const S3_BASE_URL = "https://nacxpfuwluqkropjezyu.supabase.co/storage/v1/s3";
 
   const { data, error } = await supabase.storage.from(BUCKET_NAME).list();
   if (error) {
@@ -68,14 +77,29 @@ const fetchImages = async (): Promise<void> => {
     return;
   }
 
-  images.value = data.map((img) => `${S3_BASE_URL}/${img.name}`);
-  console.log(images.value, "feyched images");
+  const signedUrls = await Promise.all(
+    data.map(async (img) => {
+      const { data: signedUrlData, error: signedUrlError } =
+        await supabase.storage
+          .from(BUCKET_NAME)
+          .createSignedUrl(img.name, 60 * 60 * 24); // 24-hour expiry
+
+      if (signedUrlError) {
+        console.error("Error generating signed URL:", signedUrlError.message);
+        return null;
+      }
+
+      return signedUrlData.signedUrl;
+    })
+  );
+
+  images.value = signedUrls.filter((url) => url !== null);
 };
 
-const logout = async (): Promise<void> => {
-  await supabase.auth.signOut();
+const handleLogout = async (): Promise<void> => {
+  await logout();
   user.value = null;
-  navigateTo("/admin/login");
+  router.push("/admin/login");
 };
 
 onMounted(fetchImages);

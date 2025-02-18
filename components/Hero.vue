@@ -2,8 +2,11 @@
   <div>
     <v-container fluid>
       <v-row>
-        <v-col class="px-0" cols="12">
+        <v-col class="px-0 d-none d-md-block" cols="12">
           <v-img src="/images/hero/hero-3.jpg" height="70vh" cover lazy-src="/images/hero/hero-3.jpg"></v-img>
+        </v-col>
+          <v-col class="px-0 d-block d-md-none" cols="12">
+          <v-img src="/images/hero-mob.png" height="70vh" cover lazy-src="/images/hero/hero-3.jpg"></v-img>
         </v-col>
       </v-row>
       <v-row class="px-md-3 px-5 py-0 background-black text-white mt-1">

@@ -1,6 +1,15 @@
 <template>
   <div>
-    <v-container fluid class="py-0">
+      <div v-if="isLoading" class="loading-spinner">
+      <div class="loading-spinner-inner">
+        <div class="loading-spinner-circle"></div>
+        <div class="loading-spinner-circle"></div>
+        <div class="loading-spinner-circle"></div>
+        <div class="loading-spinner-circle"></div>
+        <div class="loading-spinner-circle"></div>
+      </div>
+    </div>
+    <v-container fluid class="py-0" v-show="!isLoading">
       <v-row>
         <v-col class="px-0 mx-0">
           <v-row class="py-0 px-0 py-0">
@@ -176,6 +185,15 @@ useSeoMeta({
   ogDescription: "where timeless craftsmanship meets unmatched purity",
   ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
   twitterCard: "summary_large_image",
+});
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  // Simulate a delay (e.g., waiting for API calls or page content to load)
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 1000); // Adjust time as needed
 });
 
 const whatsappLink = "https://wa.me/9686860582";
@@ -418,4 +436,65 @@ ul {
 .example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
   background-color: #ff0000;
 }
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black; /* Change as needed */
+  z-index: 9999;
+}
+
+.loading-spinner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner-circle {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: red;
+  margin: 0 5px;
+  animation: loading-spinner 1s ease-in-out infinite;
+}
+
+.loading-spinner-circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-spinner-circle:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.loading-spinner-circle:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.loading-spinner-circle:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  20% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 </style>

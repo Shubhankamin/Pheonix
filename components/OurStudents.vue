@@ -51,9 +51,9 @@
           elevation="0"
         >
           <v-row>
-            <v-col cols="6" md="2" >
+            <v-col cols="6" md="2">
               <div>
-                <v-img :src="item.src" />
+                <v-img :src="item.src" :lazy-src="item.src" />
               </div>
             </v-col>
             <v-col cols="12" md="6">

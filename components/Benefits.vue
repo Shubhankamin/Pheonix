@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid class="background-red mt-1" >
+    <v-container fluid class="background-red " >
       <v-row>
         <v-col cols="12" class="">
           <p

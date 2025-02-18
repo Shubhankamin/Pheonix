@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #4f000b" class="mt-2">
+  <div style="background-color: #4f000b" class="mt-1">
     <v-container fluid>
       <v-row>
         <v-col cols="12" class="">
@@ -48,6 +48,7 @@
             style="position: relative"
             cover
             :src="item.src"
+            :lazy-src="item.src"
           >
             <v-card
               style="position: absolute; bottom: 5%; right: 2%"

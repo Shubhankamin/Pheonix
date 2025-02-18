@@ -16,7 +16,7 @@
             <v-col class="py-0 px-0" cols="12">
               <Nav />
 
-              <v-img src="/images/hero/hero-2.jpg" cover height="250"> </v-img>
+              <v-img src="/images/background/bg-1.jpeg" cover class="cover-img"> </v-img>
             </v-col>
             <v-col cols="12" class="mx-0 px-0">
               <div class="bg-black px-10">
@@ -204,6 +204,12 @@ onMounted(() => {
 });
 </script>
 <style scoped>
+
+.cover-img{
+  height: 250px;
+}
+
+
 /* Loader Styles */
 .loading-spinner {
   display: flex;

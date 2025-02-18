@@ -9,31 +9,15 @@
         <div class="loading-spinner-circle"></div>
       </div>
     </div>
-    <v-container fluid class="" v-show="!isLoading">
+    <v-container fluid v-show="!isLoading">
       <v-row class="pa-0">
         <v-col class="pa-0">
           <Nav />
-          <v-row>
-            <v-col class="px-0">
-              <div class="image-grid">
-                <div
-                  v-for="(row, rowIndex) in imageRows"
-                  :key="rowIndex"
-                  class="image-row"
-                >
-                  <div
-                    v-for="(image, imageIndex) in row"
-                    :key="imageIndex"
-                    class="image"
-                    :style="{
-                      backgroundImage: `url(${image.url})`,
-                      flex: image.flex,
-                      backgroundPositionY: top,
-                    }"
-                    @click="show(image, flatImageList, getImageIndex(image))"
-                  ></div>
-                </div>
-              </div>
+          <v-row class="pa-5">
+            <v-col v-for="(image, index) in images" :key="index" cols="6" md="3">
+              <v-card class="image-card" @click="show(image, images, index)">
+                <v-img :src="image" class="image" height="200px" cover></v-img>
+              </v-card>
             </v-col>
           </v-row>
           <v-row>
@@ -48,128 +32,37 @@
 </template>
 
 <script setup>
-useSeoMeta({
-  title: "GALLERY | PHEONIX ACADEMY",
-  ogTitle: "GALLERY | PHEONIX ACADEMY",
-  description: "where timeless craftsmanship meets unmatched purity",
-  ogDescription: "where timeless craftsmanship meets unmatched purity",
-  ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
-  twitterCard: "summary_large_image",
-});
-
+import { ref, onMounted } from "vue";
 import { api as viewerApi } from "v-viewer";
-import "viewerjs/dist/viewer.css";
-import { ref, computed } from "vue";
+import { useGallery } from "~/composables/useGallery";
 
-const viewerInstance = ref(null);
-const viewerOptions = {
-  zIndex: 9999,
-  toolbar: true,
-  title: true,
-  loading: true,
-};
-
-const show = (src, itemsImage, index) => {
-  viewerInstance.value = null;
-  if (itemsImage) {
-    viewerInstance.value = viewerApi({
-      images: itemsImage.map((img) => img.url),
-      options: viewerOptions,
-    });
-    viewerInstance.value.view(index);
-  }
-};
+const { images, fetchImages } = useGallery();
 const isLoading = ref(true);
 
-onMounted(() => {
-  setTimeout(() => {
+const show = (src, itemsImage, index) => {
+  viewerApi({
+    images: itemsImage,
+    options: { zIndex: 9999, toolbar: true, title: true, loading: true },
+  }).view(index);
+};
+
+onMounted(async () => {
+  isLoading.value = true;
+  try {
+    await fetchImages();
+  } catch (error) {
+    console.error("Error fetching images:", error);
+  } finally {
     isLoading.value = false;
-  }, 1000); // Adjust time as needed
+  }
 });
-
-const flatImageList = computed(() =>
-  imageRows.flat().map((image) => ({
-    url: image.url,
-    category: image.category || null,
-  }))
-);
-
-const getImageIndex = (image) =>
-  flatImageList.value.findIndex((img) => img.url === image.url);
-
-const imageRows = [
-  [
-    { url: "/images/gallery/gal-1.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-2.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-3.jpeg", flex: 1 },
-    {
-      url: "/images/gallery/gal-4.jpeg",
-      flex: 1,
-    },
-  ],
-  [
-    {
-      url: "/images/gallery/gal-5.jpeg",
-      flex: 1,
-    },
-    { url: "/images/gallery/gal-6.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-7.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-8.jpeg", flex: 1 },
-  ],
-  [
-    { url: "/images/gallery/gal-9.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-10.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-11.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-12.jpeg", flex: 1 },
-    { url: "/images/gallery/gal-13.jpeg", flex: 1 },
-  ],
-  // [{ url: "/images/gallery/gal-13.jpeg", flex: 1 }],
-];
 </script>
 
 <style scoped>
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  background-color: #171414;
-}
-
-.image-grid {
-  padding: 12px;
-}
-
-.image-row {
-  display: flex;
-  
-}
-
-.image-row .image {
-  margin: 12px;
-  height: 270px;
-  background-size: cover;
-  background-position-y: center;
-}
-
-.image {
+.image-card {
   cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
-
-.image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15),
-    0 6px 20px rgba(0, 0, 0, 0.7);
-}
-
 .loading-spinner {
   display: flex;
   align-items: center;

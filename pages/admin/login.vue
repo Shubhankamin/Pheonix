@@ -6,7 +6,7 @@
     <v-container fluid>
       <v-row class="justify-center">
         <v-col cols="6">
-          <v-card>
+          <v-card class="card text-white">
             <v-row class="justify-center pt-5">
               <v-col cols="4">
                 <v-img src="/images/logo/logo-pheo-2.png"></v-img>
@@ -24,6 +24,8 @@
                       prepend-inner-icon="mdi-email-outline"
                       variant="outlined"
                       label="Email Address"
+                      :rules="[emailRule]"
+                      required
                     />
                     <v-text-field
                       v-model="password"
@@ -32,6 +34,9 @@
                       type="password"
                       variant="outlined"
                       label="Password"
+                      :rules="[passwordRule]"
+                      required
+                      class="mt-4"
                     />
                   </v-col>
                 </v-row>
@@ -39,10 +44,11 @@
                   <v-col cols="4" class="py-5">
                     <v-btn
                       type="submit"
-                      color="black"
+                      color="white"
                       block
                       :loading="loading"
-                      class="py-5"
+                      :disabled="!isFormValid"
+                      class="py-5 text-black"
                       >Login</v-btn
                     >
                   </v-col>
@@ -53,20 +59,62 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!-- Snackbar for Success & Error Messages -->
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="3000"
+      :color="snackbarColor"
+      location="top right"
+    >
+      {{ snackbarMessage }}
+    </v-snackbar>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
 import { useAuth } from "../../composables/auth";
 import { useCookie, navigateTo } from "#app";
 
 const { email, password, loading, login } = useAuth();
 const user = useCookie<any>("user");
 
+const snackbar = ref(false);
+const snackbarMessage = ref("");
+const snackbarColor = ref("error");
+
+const emailRule = (v: string) =>
+  (!!v && /.+@.+\..+/.test(v)) || "Enter a valid email address";
+const passwordRule = (v: string) =>
+  (!!v && v.length >= 6) || "Password must be at least 6 characters";
+
+const isFormValid = computed(() => {
+  return /.+@.+\..+/.test(email.value) && password.value.length >= 6;
+});
+
 const handleLogin = async () => {
   const { session, error } = await login();
-  if (error) return alert(error);
+
+  if (error) {
+    snackbarMessage.value = error;
+    snackbarColor.value = "error";
+    snackbar.value = true;
+    return;
+  }
+
+  snackbarMessage.value = "Login successful!";
+  snackbarColor.value = "success";
+  snackbar.value = true;
+
   user.value = session;
-  navigateTo("/admin");
+  setTimeout(() => {
+    navigateTo("/admin");
+  }, 500);
 };
 </script>
+<style scoped>
+.card {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), black);
+}
+</style>

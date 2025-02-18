@@ -20,13 +20,10 @@ export default defineNuxtConfig({
     //...
   ],
 
-  site: { name: "PHEONIX ACADEMY", url: "https://nemmadicare.com/" },
+  site: { name: "PHEONIX ACADEMY", url: "https://pheonixacademy.in/" },
   sitemap: {
-    defaults: {
-      lastmod: "2024-11-29",
-      priority: 0.5,
-      changefreq: "weekly",
-    },
+    sources: ["/api/__sitemap__/urls"],
+    excludeAppSources: true,
     xslColumns: [
       // URL column must always be set, no value needed
       { label: "URL", width: "75%" },
@@ -35,6 +32,13 @@ export default defineNuxtConfig({
     // autoLastmod: true,
     discoverImages: false,
     xslTips: false,
+  },
+
+  runtimeConfig: {
+    public: {
+      supaBaseUrl: process.env.SUPABASE_URL,
+      supaBaseKey: process.env.SUPABASE_KEY,
+    },
   },
 
   vite: {

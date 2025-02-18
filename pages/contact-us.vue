@@ -116,7 +116,7 @@
             </v-col>
             <v-col cols="12" md="6" class="px-10 px-md-5">
               <form
-                action="https://formsubmit.co/vijh45@gmail.com"
+                action="https://formsubmit.co/shubhankamin001@gmail.com"
                 method="POST"
               >
                 <div>

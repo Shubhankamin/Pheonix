@@ -1,60 +1,63 @@
 <template>
-  <v-container class="admin-panel">
-    <h2>Admin Panel</h2>
-    <v-file-input
-      label="Upload Image"
-      @change="handleFileUpload"
-      ref="fileInput"
-    />
+  <div>
+    <Nav />
+    <v-container class="admin-panel">
+      <h2>Admin Panel</h2>
+      <v-file-input
+        label="Upload Image"
+        @change="handleFileUpload"
+        ref="fileInput"
+      />
 
-    <div class="d-flex justify-space-between">
-      <v-btn @click="uploadImage" :loading="loading" color="primary"
-        >Upload</v-btn
+      <div class="d-flex justify-space-between">
+        <v-btn @click="uploadImage" :loading="loading" color="primary"
+          >Upload</v-btn
+        >
+        <v-btn @click="openLogoutDialog" color="error">Logout</v-btn>
+      </div>
+
+      <v-container class="gallery mt-5">
+        <v-row>
+          <v-col v-for="image in images" :key="image" cols="12" md="4">
+            <v-card>
+              <v-img :src="image" height="200px"></v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- Snackbar for Upload Success/Error Messages -->
+      <v-snackbar
+        v-model="snackbar"
+        :timeout="3000"
+        :color="snackbarColor"
+        location="top right"
       >
-      <v-btn @click="openLogoutDialog" color="error">Logout</v-btn>
-    </div>
+        {{ snackbarMessage }}
+      </v-snackbar>
 
-    <v-container class="gallery mt-5">
-      <v-row>
-        <v-col v-for="image in images" :key="image" cols="12" md="4">
-          <v-card>
-            <v-img :src="image" height="200px"></v-img>
-          </v-card>
-        </v-col>
-      </v-row>
+      <!-- Logout Confirmation Dialog -->
+      <v-dialog v-model="logoutDialog" max-width="400px">
+        <v-card>
+          <p class="text-center my-5 ubuntu-regular-h3">
+            Are you sure you want to log out?
+          </p>
+          <v-card-actions class="mb-2 px-4">
+            <v-btn @click="closeLogoutDialog" color="white" class="bg-black"
+              >Cancel</v-btn
+            >
+            <v-btn
+              @click="handleLogout"
+              color="black"
+              class="bg-white"
+              style="border: 1px solid black"
+              >Yes</v-btn
+            >
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-container>
-
-    <!-- Snackbar for Upload Success/Error Messages -->
-    <v-snackbar
-      v-model="snackbar"
-      :timeout="3000"
-      :color="snackbarColor"
-      location="top right"
-    >
-      {{ snackbarMessage }}
-    </v-snackbar>
-
-    <!-- Logout Confirmation Dialog -->
-    <v-dialog v-model="logoutDialog" max-width="400px">
-      <v-card>
-        <p class="text-center my-5 ubuntu-regular-h3">
-          Are you sure you want to log out?
-        </p>
-        <v-card-actions class="mb-2 px-4">
-          <v-btn @click="closeLogoutDialog" color="white" class="bg-black"
-            >Cancel</v-btn
-          >
-          <v-btn
-            @click="handleLogout"
-            color="black"
-            class="bg-white"
-            style="border: 1px solid black"
-            >Yes</v-btn
-          >
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-container>
+  </div>
 </template>
 
 <script setup lang="ts">

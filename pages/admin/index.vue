@@ -4,7 +4,7 @@
     <v-container class="admin-panel">
       <h2>Admin Panel</h2>
       <v-file-input
-        label="Upload Image"
+        label="Select image to upload"
         @change="handleFileUpload"
         ref="fileInput"
       />
@@ -163,15 +163,16 @@ const uploadImage = async (): Promise<void> => {
     return;
   }
 
-  const { data } = supabase.storage.from(BUCKET_NAME).getPublicUrl(fileName);
-  images.value.unshift(data.publicUrl);
+  await fetchImages(); // Refresh the gallery
+
+  // ✅ Clear the file input
+  file.value = null;
+  fileInput.value?.reset();
 
   loading.value = false;
   snackbarMessage.value = "Image uploaded successfully!";
   snackbarColor.value = "success";
   snackbar.value = true;
-
-  await fetchImages();
 };
 
 const fetchImages = async (): Promise<void> => {
@@ -189,9 +190,15 @@ const fetchImages = async (): Promise<void> => {
       return;
     }
 
+    // Sort images by last modified time (newest first)
+    const sortedData = data.sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+
     // Fetch signed URLs for each image
     const signedUrls = await Promise.all(
-      data.map(async (img) => {
+      sortedData.map(async (img) => {
         const { data } = await supabase.storage
           .from(BUCKET_NAME)
           .createSignedUrl(img.name, 60 * 60); // 1-hour expiry
@@ -199,8 +206,8 @@ const fetchImages = async (): Promise<void> => {
       })
     );
 
-    images.value = signedUrls; // ✅ Store signed URLs
-    console.log("Updated image list with signed URLs:", images.value);
+    images.value = signedUrls; // ✅ Store sorted images
+    console.log("Updated image list with signed URLs (sorted):", images.value);
   } catch (err) {
     console.error("Error fetching images:", err);
     snackbarMessage.value = "An unexpected error occurred.";

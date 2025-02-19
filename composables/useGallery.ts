@@ -12,21 +12,26 @@ export function useGallery() {
 
     try {
       const { data, error } = await supabase.storage.from(BUCKET_NAME).list();
+
       if (error) throw new Error(error.message);
 
-      // Fetch signed URLs (valid for  5 years)
-      const signedUrls = await Promise.all(
-        data.map(async (img) => {
-          const { data, error } = await supabase.storage
+      // Sort images by `created_at` (newest first)
+      const sortedData = data.sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+
+      // Fetch signed URLs for each image
+      images.value = await Promise.all(
+        sortedData.map(async (img) => {
+          const { data } = await supabase.storage
             .from(BUCKET_NAME)
-            .createSignedUrl(img.name, EXPIRATION_TIME);
-          if (error) throw new Error(error.message);
+            .createSignedUrl(img.name, 60 * 60 * 24 * 365 * 5); // 5-year expiry
           return { name: img.name, url: data.signedUrl };
         })
       );
 
-      images.value = signedUrls;
-      console.log("Fetched Images with Signed URLs:", images.value);
+      console.log("Fetched Sorted Images:", images.value);
     } catch (err) {
       console.error("Error fetching images:", err);
     }

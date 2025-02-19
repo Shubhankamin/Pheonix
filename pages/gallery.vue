@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Loader -->
     <div v-if="isLoading" class="loading-spinner">
       <div class="loading-spinner-inner">
         <div class="loading-spinner-circle"></div>
@@ -9,14 +10,26 @@
         <div class="loading-spinner-circle"></div>
       </div>
     </div>
+
+    <!-- Gallery -->
     <v-container fluid v-show="!isLoading">
       <v-row class="pa-0">
         <v-col class="pa-0">
           <Nav />
           <v-row class="pa-5">
-            <v-col v-for="(image, index) in images" :key="index" cols="6" md="3">
-              <v-card class="image-card" @click="show(image, images, index)">
-                <v-img :src="image" class="image" height="200px" cover></v-img>
+            <v-col
+              v-for="(image, index) in images"
+              :key="index"
+              cols="6"
+              md="3"
+            >
+              <v-card class="image-card" @click="show(image.url, index)">
+                <v-img
+                  :src="image.url"
+                  class="image"
+                  height="200px"
+                  cover
+                ></v-img>
               </v-card>
             </v-col>
           </v-row>
@@ -34,28 +47,47 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { api as viewerApi } from "v-viewer";
+import "viewerjs/dist/viewer.css";
 import { useGallery } from "~/composables/useGallery";
 
+// Get the fetchImages function from the composable
 const { images, fetchImages } = useGallery();
+
 const isLoading = ref(true);
 
-const show = (src, itemsImage, index) => {
-  viewerApi({
-    images: itemsImage,
-    options: { zIndex: 9999, toolbar: true, title: true, loading: true },
-  }).view(index);
-};
-
+// Fetch images on mount
 onMounted(async () => {
   isLoading.value = true;
   try {
+    // Fetch images and store them in images.value
     await fetchImages();
+    console.log("Fetched Images:", images.value); // Debugging log to verify
   } catch (error) {
     console.error("Error fetching images:", error);
   } finally {
     isLoading.value = false;
   }
 });
+
+// Function to show images using Viewer.js
+const show = (imageUrl, index) => {
+  if (!imageUrl) return; // Check if imageUrl exists
+
+  // Debugging the clicked image URL
+  console.log("Clicked image URL:", imageUrl);
+
+  const viewerInstance = viewerApi({
+    images: images.value.map((img) => img.url), // Ensure it's an array of URLs
+    options: {
+      zIndex: 9999,
+      toolbar: true,
+      title: true,
+      loading: true,
+    },
+  });
+
+  viewerInstance.view(index);
+};
 </script>
 
 <style scoped>
@@ -63,6 +95,7 @@ onMounted(async () => {
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
+
 .loading-spinner {
   display: flex;
   align-items: center;
@@ -72,7 +105,7 @@ onMounted(async () => {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: black; /* Change as needed */
+  background-color: black;
   z-index: 9999;
 }
 
@@ -91,33 +124,15 @@ onMounted(async () => {
   animation: loading-spinner 1s ease-in-out infinite;
 }
 
-.loading-spinner-circle:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.loading-spinner-circle:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.loading-spinner-circle:nth-child(4) {
-  animation-delay: 0.6s;
-}
-
-.loading-spinner-circle:nth-child(5) {
-  animation-delay: 0.8s;
-}
-
 @keyframes loading-spinner {
   0% {
     transform: scale(1);
     opacity: 1;
   }
-
   20% {
     transform: scale(1.5);
     opacity: 0.5;
   }
-
   100% {
     transform: scale(1);
     opacity: 1;

@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template >
+  <div >
     <!-- Loader -->
     <div v-if="isLoading" class="loading-spinner">
       <div class="loading-spinner-inner">
@@ -12,14 +12,13 @@
     </div>
 
     <!-- Main Content -->
-    <div v-show="!isLoading">
+    <div v-show="!isLoading" class="overflow-y-hidden">
       <Nav />
       <Logos />
       <Hero />
       <Benefits />
       <OurPrograms />
       <OurMasters />
-      <!-- <OurStudents /> -->
       <Footer />
     </div>
   </div>

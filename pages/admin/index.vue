@@ -18,15 +18,20 @@
 
       <v-container class="gallery mt-5">
         <v-row>
-          <v-col v-for="image in images" :key="image" cols="12" md="4">
+          <v-col v-for="image in images" :key="image.fileName" cols="12" md="4">
             <v-card>
-              <v-img :src="image" height="200px"></v-img>
+              <v-img :src="image.signedUrl" height="200px"></v-img>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn icon @click="confirmDelete(image.fileName)">
+                  <v-icon color="red">mdi-delete</v-icon>
+                </v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
       </v-container>
 
-      <!-- Snackbar for Upload Success/Error Messages -->
       <v-snackbar
         v-model="snackbar"
         :timeout="3000"
@@ -36,7 +41,6 @@
         {{ snackbarMessage }}
       </v-snackbar>
 
-      <!-- Logout Confirmation Dialog -->
       <v-dialog v-model="logoutDialog" max-width="400px">
         <v-card>
           <p class="text-center my-5 ubuntu-regular-h3">
@@ -53,6 +57,27 @@
               style="border: 1px solid black"
               >Yes</v-btn
             >
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog v-model="deleteDialog" max-width="400px">
+        <v-card>
+          <p class="text-center my-5 ubuntu-regular-h3">
+            Are you sure you want to delete this image?
+          </p>
+          <v-card-actions class="mb-2 px-4">
+            <v-btn @click="deleteDialog = false" color="white" class="bg-black"
+              >Cancel</v-btn
+            >
+            <v-btn
+              @click="deleteImage()"
+              color="black"
+              class="bg-white"
+              style="border: 1px solid black"
+            >
+              Yes
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -86,6 +111,8 @@ const snackbarMessage = ref("");
 const snackbarColor = ref("error");
 
 const logoutDialog = ref(false);
+const deleteDialog = ref(false);
+const imageToDelete = ref<string | null>(null);
 
 const handleFileUpload = (event: Event): void => {
   const target = event.target as HTMLInputElement;
@@ -118,7 +145,10 @@ const uploadImage = async (): Promise<void> => {
 
   loading.value = true;
 
-  const fileName = `${Date.now()}-${file.value.name}`;
+  const sanitizedFileName = file.value.name
+    .replace(/\s+/g, "_")
+    .replace(/[^a-zA-Z0-9._-]/g, "");
+  const fileName = `${Date.now()}-${sanitizedFileName}`;
   const BUCKET_NAME = "pheonix";
 
   const { error } = await supabase.storage
@@ -141,38 +171,106 @@ const uploadImage = async (): Promise<void> => {
   snackbarColor.value = "success";
   snackbar.value = true;
 
-  // Refresh images list without reloading the entire page
   await fetchImages();
 };
 
 const fetchImages = async (): Promise<void> => {
   const BUCKET_NAME = "pheonix";
 
-  const { data, error } = await supabase.storage.from(BUCKET_NAME).list();
-  if (error) {
-    snackbarMessage.value = `Error fetching images: ${error.message}`;
+  try {
+    console.log("Fetching updated image list...");
+
+    const { data, error } = await supabase.storage.from(BUCKET_NAME).list();
+
+    if (error) {
+      snackbarMessage.value = `Error fetching images: ${error.message}`;
+      snackbarColor.value = "error";
+      snackbar.value = true;
+      return;
+    }
+
+    // Fetch signed URLs for each image
+    const signedUrls = await Promise.all(
+      data.map(async (img) => {
+        const { data } = await supabase.storage
+          .from(BUCKET_NAME)
+          .createSignedUrl(img.name, 60 * 60); // 1-hour expiry
+        return { signedUrl: data.signedUrl, fileName: img.name };
+      })
+    );
+
+    images.value = signedUrls; // ✅ Store signed URLs
+    console.log("Updated image list with signed URLs:", images.value);
+  } catch (err) {
+    console.error("Error fetching images:", err);
+    snackbarMessage.value = "An unexpected error occurred.";
     snackbarColor.value = "error";
     snackbar.value = true;
+  }
+};
+
+// Open the delete confirmation dialog
+const confirmDelete = (fileName: string) => {
+  console.log("🛠️ Confirming deletion for:", fileName);
+  imageToDelete.value = fileName; // Store file name directly
+  deleteDialog.value = true;
+};
+
+const getFilePath = (imageUrl: string): string | null => {
+  if (!imageUrl) return null;
+
+  // Extract the correct file path by removing bucket prefix
+  const basePath = imageUrl.split("/object/")[1];
+  if (!basePath) return null;
+
+  return basePath.replace(/^public\/pheonix\//, ""); // ✅ Ensure correct path
+};
+const refreshImages = async () => {
+  const { data, error } = await supabase.storage.from("pheonix").list("", {
+    cacheControl: "no-cache",
+  });
+
+  if (error) {
+    console.error("❌ Failed to refresh images:", error.message);
     return;
   }
 
-  const signedUrls = await Promise.all(
-    data.map(async (img) => {
-      const { data: signedUrlData, error: signedUrlError } =
-        await supabase.storage
-          .from(BUCKET_NAME)
-          .createSignedUrl(img.name, 60 * 60 * 24);
+  images.value = data.map((file) => file.name); // ✅ Update UI with fresh list
+};
 
-      if (signedUrlError) {
-        console.error("Error generating signed URL:", signedUrlError.message);
-        return null;
-      }
+const deleteImage = async () => {
+  if (!imageToDelete.value) {
+    console.log("❌ No image name provided for deletion.");
+    return;
+  }
 
-      return signedUrlData.signedUrl;
-    })
-  );
+  console.log("🗑️ Deleting file:", imageToDelete.value);
 
-  images.value = signedUrls.filter((url) => url !== null);
+  try {
+    console.log("📌 Sending DELETE request to Supabase Storage...");
+
+    const { error } = await supabase.storage
+      .from("pheonix") // ✅ Your bucket name
+      .remove([imageToDelete.value]); // ✅ Delete using file name
+
+    if (error) {
+      console.error("❌ Supabase delete error:", error.message);
+      return;
+    }
+
+    console.log("✅ File deleted successfully from Supabase!");
+
+    // ✅ Refresh images after deletion
+    await fetchImages();
+
+    snackbarMessage.value = "Image deleted successfully!";
+    snackbarColor.value = "success";
+    snackbar.value = true;
+
+    deleteDialog.value = false; // Close dialog after deletion
+  } catch (err) {
+    console.error("❌ Unexpected error deleting image:", err);
+  }
 };
 
 const openLogoutDialog = () => {
@@ -186,7 +284,7 @@ const closeLogoutDialog = () => {
 const handleLogout = async () => {
   await logout();
   user.value = null;
-  snackbarMessage.value = "Logout successfull!";
+  snackbarMessage.value = "Logout successful!";
   snackbarColor.value = "success";
   snackbar.value = true;
   router.push("/admin/login");

@@ -21,6 +21,7 @@ const whatsappLink = "https://wa.me/9686860582";
 .layout-wrapper {
   min-height: 100vh;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .float {

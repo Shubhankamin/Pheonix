@@ -123,20 +123,20 @@
             ></a>
           </ul>
 
-          <v-divider
+          <!-- <v-divider
             :thickness="3"
             class="border-opacity-50 mt-5"
             color="white"
-          ></v-divider>
+          ></v-divider> -->
         </v-col>
       </v-row>
-      <v-row class="justify-center py-0 my-0">
+      <!-- <v-row class="justify-center py-0 my-0">
         <v-col cols="6">
           <p class="text-center text-white ubuntu-regular-h3 ">
             © 2024 Lift Media | All Rights Reserved
           </p>
         </v-col>
-      </v-row>
+      </v-row> -->
     </v-container>
   </div>
 </template>

@@ -1,19 +1,31 @@
 <template>
   <div>
     <Nav />
-    <v-container class="admin-panel">
-      <h2>Admin Panel</h2>
-      <v-file-input
-        label="Select image to upload"
-        @change="handleFileUpload"
-        ref="fileInput"
-      />
+    <v-container class="admin-panel" fluid>
+      <div class="d-flex justify-space-between mb-10">
+        <h2 class="ubuntu-regular-h2">Gallery Panel</h2>
 
-      <div class="d-flex justify-space-between">
-        <v-btn @click="uploadImage" :loading="loading" color="primary"
-          >Upload</v-btn
-        >
         <v-btn @click="openLogoutDialog" color="error">Logout</v-btn>
+      </div>
+
+      <div class="upload-container">
+        <div class="upload-box" @click="triggerFileInput">
+          <button class="upload-button">Select Images</button>
+          <p class="upload-text">or drag & drop here</p>
+          <input
+            type="file"
+            ref="fileInput"
+            @change="handleFileUpload"
+            hidden
+          />
+          <p v-if="file" class="file-name">📁 {{ file.name }}</p>
+        </div>
+
+        <div class="d-flex justify-center mt-4">
+          <v-btn @click="uploadImage" :loading="loading" color="primary"
+            >Upload</v-btn
+          >
+        </div>
       </div>
 
       <v-container class="gallery mt-5">
@@ -113,6 +125,10 @@ const snackbarColor = ref("error");
 const logoutDialog = ref(false);
 const deleteDialog = ref(false);
 const imageToDelete = ref<string | null>(null);
+
+const triggerFileInput = () => {
+  fileInput.value?.click();
+};
 
 const handleFileUpload = (event: Event): void => {
   const target = event.target as HTMLInputElement;
@@ -300,3 +316,45 @@ const handleLogout = async () => {
 
 onMounted(fetchImages);
 </script>
+<style scoped>
+.upload-container {
+  text-align: center;
+}
+
+.upload-box {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+  border-color: #007bff;
+}
+
+.upload-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.upload-text {
+  color: #777;
+  margin-top: 8px;
+}
+
+.info-text {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+</style>

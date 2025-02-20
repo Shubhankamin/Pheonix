@@ -17,6 +17,7 @@
     "nuxt": "^3.13.0",
     "nuxt-robots": "^2.0.1",
     "nuxt-swiper": "^1.2.2",
+    "resend": "^4.1.2",
     "swiper": "^11.1.14",
     "v-viewer": "^3.0.21",
     "vue": "latest",

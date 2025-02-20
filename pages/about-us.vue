@@ -16,7 +16,18 @@
             <v-col class="py-0 px-0" cols="12">
               <Nav />
 
-              <v-img src="/images/background/bg-1.jpeg" cover class="cover-img"> </v-img>
+              <v-img
+                src="/images/cover-final.jpeg"
+                cover
+                class="cover-img d-none d-md-block"
+              >
+              </v-img>
+              <v-img
+                src="/images/background/bg-new.jpeg"
+                cover
+                class="d-block d-md-none"
+              >
+              </v-img>
             </v-col>
             <v-col cols="12" class="mx-0 px-0">
               <div class="bg-black px-10">
@@ -27,7 +38,7 @@
           <v-row>
             <v-col class="px-0">
               <div class="px-5 pb-10">
-                <v-row class="ga-10 justify-center">
+                <!-- <v-row class="ga-10 justify-center">
                   <v-col class="mx-0 px-0" cols="12" md="5">
                     <v-img src="/images/hero/hero-2.jpg" cover height="250">
                     </v-img>
@@ -36,7 +47,7 @@
                     <v-img src="/images/hero/hero-2.jpg" cover height="250">
                     </v-img>
                   </v-col>
-                </v-row>
+                </v-row> -->
                 <v-row>
                   <v-col cols="12" class="px-4">
                     <div>
@@ -204,11 +215,9 @@ onMounted(() => {
 });
 </script>
 <style scoped>
-
-.cover-img{
-  height: 250px;
+.cover-img {
+  height: 550px;
 }
-
 
 /* Loader Styles */
 .loading-spinner {

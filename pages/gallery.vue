@@ -12,7 +12,7 @@
     </div>
 
     <!-- Gallery -->
-    <v-container fluid v-show="!isLoading">
+    <v-container fluid v-else>
       <v-row class="pa-0">
         <v-col class="pa-0">
           <Nav />
@@ -50,34 +50,30 @@ import { api as viewerApi } from "v-viewer";
 import "viewerjs/dist/viewer.css";
 import { useGallery } from "~/composables/useGallery";
 
-// Get the fetchImages function from the composable
 const { images, fetchImages } = useGallery();
 
 const isLoading = ref(true);
 
-// Fetch images on mount
 onMounted(async () => {
-  isLoading.value = true;
   try {
-    // Fetch images and store them in images.value
     await fetchImages();
-    console.log("Fetched Images:", images.value); // Debugging log to verify
+    console.log("Fetched Images:", images.value);
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Delay for 2 seconds
   } catch (error) {
     console.error("Error fetching images:", error);
   } finally {
-    isLoading.value = false;
   }
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 1500);
 });
 
-// Function to show images using Viewer.js
 const show = (imageUrl, index) => {
-  if (!imageUrl) return; // Check if imageUrl exists
-
-  // Debugging the clicked image URL
+  if (!imageUrl) return;
   console.log("Clicked image URL:", imageUrl);
 
   const viewerInstance = viewerApi({
-    images: images.value.map((img) => img.url), // Ensure it's an array of URLs
+    images: images.value.map((img) => img.url),
     options: {
       zIndex: 9999,
       toolbar: true,
@@ -105,7 +101,7 @@ const show = (imageUrl, index) => {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: black; /* Change as needed */
   z-index: 9999;
 }
 
@@ -124,15 +120,33 @@ const show = (imageUrl, index) => {
   animation: loading-spinner 1s ease-in-out infinite;
 }
 
+.loading-spinner-circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-spinner-circle:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.loading-spinner-circle:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.loading-spinner-circle:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
 @keyframes loading-spinner {
   0% {
     transform: scale(1);
     opacity: 1;
   }
+
   20% {
     transform: scale(1.5);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;

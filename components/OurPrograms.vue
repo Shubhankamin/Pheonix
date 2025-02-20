@@ -77,14 +77,14 @@ const sliderImages = [
   },
 
   {
-    src: "/images/prog-4.jpeg",
+    src: "/images/prog-2.png",
     title: "Saturday 10-11",
     description:
       "Kickstart your weekend with karate training every Saturday from 10 to 11 AM.",
   },
 
   {
-    src: "/images/prog-4.jpeg",
+    src: "/images/prog-1.jpg",
     title: "Sunday 10-11",
     description:
       "Wrap up your weekend with a dynamic karate session every Sunday, 10 to 11 AM.",

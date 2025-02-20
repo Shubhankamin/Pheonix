@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     public: {
       supaBaseUrl: process.env.SUPABASE_URL,
       supaBaseKey: process.env.SUPABASE_KEY,
+      resendKey: process.env.RESEND_KEY,
     },
   },
 

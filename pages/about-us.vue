@@ -23,7 +23,7 @@
               >
               </v-img>
               <v-img
-                src="/images/background/bg-new.jpeg"
+                src="/images/cover/cover-4.jpg"
                 cover
                 class="d-block d-md-none"
               >

@@ -34,6 +34,15 @@ export default defineNuxtConfig({
     xslTips: false,
   },
 
+  nitro: {
+    routeRules: {
+      "/api/**": {
+        cors: true,
+        headers: { "Access-Control-Allow-Origin": "*" },
+      },
+    },
+  },
+
   runtimeConfig: {
     public: {
       supaBaseUrl: process.env.SUPABASE_URL,

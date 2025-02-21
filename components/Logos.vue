@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid class=" pb-md-1 pb-0 mt-md-0 " >
+    <v-container fluid class="  pb-0 mt-md-0 " >
       <v-row class=" pt-md-0">
         <v-col cols="12 bg-black">
           <swiper
@@ -10,21 +10,20 @@
             :breakpoints="{
               2560: { slidesPerView: 4 },
               1440: { slidesPerView: 4 },
-              1024: { slidesPerView: 4 },
+              1024: { slidesPerView: 3 },
               767: { slidesPerView: 3 },
               320: { slidesPerView: 1 },
             }"
             loop="true"
             :slides-per-view="3"
-            :space-between="10"
+            :space-between="50"
             :autoplay="{ delay: 3000, disableOnInteraction: false }"
             class="mySwiper mb-5 mt-5 mt-md-0"
           >
             <swiper-slide v-for="(item, i) in sliderImages" :key="i">
               <v-img
                 class="bg-image"
-                style="position: relative"
-                cover
+                style="position: relative; height: 350px;"
                 :src="item.src"
                 :lazy-src="item.src"
               >
@@ -56,7 +55,7 @@ const sliderImages = [
     subName: "subname",
   },
   {
-    src: "/images/wkf-1.png",
+    src: "/images/slider/wkf.png",
     name: "name",
     subName: "subname",
   },
@@ -66,7 +65,16 @@ const sliderImages = [
     subName: "subname",
   },
   {
-    src: "/images/akf.png",
+    src: "/images/slider/akf.png",
+    name: "name",
+    subName: "subname",
+  },
+   {
+    src: "/images/slider/kio.png",
+    name: "name",
+    subName: "subname",
+  }, {
+    src: "/images/slider/seiko.png",
     name: "name",
     subName: "subname",
   },

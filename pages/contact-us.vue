@@ -133,7 +133,16 @@
     <p class="py-5 ubuntu-regular-h3">Message</p>
     <textarea v-model="form.message" class="input w-100" placeholder="Message" required></textarea>
   </div>
-  <button class="submit py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3">Submit</button>
+<v-btn 
+  class="py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3 button"
+  color="black"
+  :loading="isBtnLoading"
+  :disabled="isBtnLoading"
+  elevation="0"
+  type="submit"
+>
+  Submit
+</v-btn>
 </form>
 
             </v-col>
@@ -162,12 +171,12 @@ useSeoMeta({
 });
 
 const isLoading = ref(true);
+const isBtnLoading=ref(false)
 const snackbar = ref({ show: false, message: "", color: "success" });
 onMounted(() => {
-  // Simulate a delay (e.g., waiting for API calls or page content to load)
   setTimeout(() => {
     isLoading.value = false;
-  }, 1000); // Adjust time as needed
+  }, 1000); 
 });
 
 const whatsappLink = "https://wa.me/9686860582";
@@ -199,6 +208,8 @@ const form = ref({
 
 const submitForm = async () => {
   try {
+    isBtnLoading.value = true; // Show loader
+
     console.log("Submitting form with data:", form.value);
 
     // Send email using API route
@@ -214,12 +225,10 @@ const submitForm = async () => {
       const errorResponse = await emailResponse.json();
       console.error("Error sending email:", errorResponse);
 
-      // ❌ Show error snackbar
       snackbar.value = { show: true, message: "Failed to send message!", color: "error" };
       return;
     }
 
-    // ✅ Show success snackbar
     snackbar.value = { show: true, message: "Message sent successfully!", color: "success" };
 
     form.value = { name: "", email: "", subject: "", message: "" };
@@ -227,8 +236,11 @@ const submitForm = async () => {
   } catch (err) {
     console.error("Form submission error:", err);
     snackbar.value = { show: true, message: "An error occurred!", color: "error" };
+  } finally {
+    isBtnLoading.value = false; // Hide loader after response
   }
 };
+
 
 
 
@@ -268,6 +280,10 @@ const selectAddress = (index) => {
 }
 .address-div.selected {
   background-color: rgba(128, 128, 128, 0.192); /* Grey with 50% opacity */
+}
+
+.button{
+  height: 50px !important;
 }
 
 .neon {

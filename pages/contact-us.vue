@@ -15,9 +15,10 @@
           <v-row class="py-0 px-0 py-0">
             <v-col class="px-0 mx-0" cols="12">
               <Nav />
-<div class="cover-image">
-
-</div>
+  <v-img src="/images/cover/cover-5.jpeg" cover class="cover-img d-none d-md-block">
+              </v-img>
+              <v-img src="/images/cover/cover2.jpeg" cover class="cover-img-mob  d-block d-md-none">
+              </v-img>
             </v-col>
             <v-col cols="12" class="px-0 py-0">
               <div class="bg-black px-5 py-2">
@@ -114,56 +115,27 @@
                 </v-row>
               </div>
             </v-col>
-            <v-col cols="12" md="6" class="px-10 px-md-5">
-              <form
-                action="https://formsubmit.co/vijh45@gmail.com"
-                method="POST"
-              >
-                <div>
-                  <p class="pb-5 ubuntu-regular-h3">Name</p>
+            <v-col cols="12" md="6" class="px-10 px-md-5 pt-md-16 mt-md-3">
+          <form @submit.prevent="submitForm">
+  <div>
+    <p class="pb-5 ubuntu-regular-h3">Name</p>
+    <input v-model="form.name" placeholder="Enter your Name" class="input w-100 py-1" type="text" required />
+  </div>
+  <div>
+    <p class="py-5 ubuntu-regular-h3">Email</p>
+    <input v-model="form.email" class="input w-100 py-1" type="email" placeholder="Enter Email" required />
+  </div>
+  <div>
+    <p class="py-5 ubuntu-regular-h3">Subject</p>
+    <input v-model="form.subject" class="input w-100 py-1" placeholder="Enter Subject" required />
+  </div>
+  <div>
+    <p class="py-5 ubuntu-regular-h3">Message</p>
+    <textarea v-model="form.message" class="input w-100" placeholder="Message" required></textarea>
+  </div>
+  <button class="submit py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3">Submit</button>
+</form>
 
-                  <input
-                    placeholder="Enter your Name"
-                    class="input w-100 py-1"
-                    type="text"
-                    name="name"
-                  />
-                </div>
-                <div>
-                  <p class="py-5 ubuntu-regular-h3">Email</p>
-
-                  <input
-                    class="input w-100 py-1"
-                    type="email"
-                    placeholder="Enter Email"
-                    name="email"
-                  />
-                </div>
-                <div>
-                  <p class="py-5 ubuntu-regular-h3">Subject</p>
-
-                  <input
-                    class="input w-100 py-1"
-                    placeholder=" Enter Subject"
-                    name="subject"
-                  />
-                </div>
-                <div>
-                  <p class="py-5 ubuntu-regular-h3">Message</p>
-
-                  <textarea
-                    class="input w-100"
-                    placeholder="Message"
-                    name="message"
-                  />
-                </div>
-                <input type="hidden" name="_captcha" value="false" />
-                <button
-                  class="submit py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3"
-                >
-                  Submit
-                </button>
-              </form>
             </v-col>
           </v-row>
           <v-row>
@@ -173,11 +145,13 @@
           </v-row>
         </v-col>
       </v-row>
+       <v-snackbar v-model="snackbar.show" :color="snackbar.color" timeout="3000">
+    {{ snackbar.message }}
+  </v-snackbar>
     </v-container>
   </div>
 </template>
 <script setup>
-
 useSeoMeta({
   title: "CONTACT US | PHEONIX ACADEMY",
   ogTitle: "CONTACT US | PHEONIX ACADEMY",
@@ -188,7 +162,7 @@ useSeoMeta({
 });
 
 const isLoading = ref(true);
-
+const snackbar = ref({ show: false, message: "", color: "success" });
 onMounted(() => {
   // Simulate a delay (e.g., waiting for API calls or page content to load)
   setTimeout(() => {
@@ -215,6 +189,51 @@ const addresses = ref([
   },
 ]);
 
+
+const form = ref({
+  name: "",
+  email: "",
+  subject: "",
+  message: ""
+});
+
+const submitForm = async () => {
+  try {
+    console.log("Submitting form with data:", form.value);
+
+    // Send email using API route
+    const emailResponse = await fetch("/api/send-email", {  
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form.value),
+    });
+
+    console.log("Email response status:", emailResponse.status);
+
+    if (!emailResponse.ok) {
+      const errorResponse = await emailResponse.json();
+      console.error("Error sending email:", errorResponse);
+
+      // ❌ Show error snackbar
+      snackbar.value = { show: true, message: "Failed to send message!", color: "error" };
+      return;
+    }
+
+    // ✅ Show success snackbar
+    snackbar.value = { show: true, message: "Message sent successfully!", color: "success" };
+
+    form.value = { name: "", email: "", subject: "", message: "" };
+
+  } catch (err) {
+    console.error("Form submission error:", err);
+    snackbar.value = { show: true, message: "An error occurred!", color: "error" };
+  }
+};
+
+
+
+
+
 const selectedAddressIndex = ref(null); // Index of selected address
 const currentMapSrc = ref(addresses.value[0].mapSrc); // Default map source
 
@@ -230,14 +249,18 @@ const selectAddress = (index) => {
   text-transform: uppercase;
 }
 
+.cover-img {
+  height: 550px;
+}
+.cover-img-mob {
+}
 .cover-image{
   background-position-y: center;
-  background-image: url("/images/hero/hero-2.jpg");
+  background-image: url("/images/cover-final.jpeg");
   height: 40vh;
 }
 .address-div {
   border: 1px solid red;
-  width: 50%;
   margin-top: 1rem;
   padding: 1rem;
   cursor: pointer;
@@ -312,7 +335,7 @@ button:hover::before {
 
 /* From Uiverse.io by SSpisso */
 .input {
-  background-color: #383838;
+  background-color: #38383850;
   border: 1ex solid none;
   border-top-width: 1.7em;
   margin: 0;

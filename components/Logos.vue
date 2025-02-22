@@ -76,7 +76,7 @@ const sliderImages = [
     subName: "subname",
   },
   {
-    src: "/images/slider/seiko.png",
+    src: "/images/slider/seiko-2.png",
     name: "name",
     subName: "subname",
   },
@@ -97,7 +97,7 @@ const sliderImages = [
     subName: "subname",
   },
   {
-    src: "/images/slider/seiko.png",
+    src: "/images/slider/seiko-2.png",
     name: "name",
     subName: "subname",
   },

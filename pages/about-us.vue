@@ -63,12 +63,20 @@
                         while honing speed, coordination, and a strong mind-body
                         connection.
                       </p>
-                      <p class="ubuntu-regular-h3 text-grey">
+                      <p class="ubuntu-regular-h3 text-grey d-none d-md-block">
                         <b class="text-black">Phoenix Academy India</b> has
                         multiple branches in bangalore such as
                         <b class="text-black">Belathur-Kadugodi,</b>
                         <b class="text-black">Channasandra-whitefield,</b>
                         <b class="text-black">HSR Layout and Hosur road.</b>
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey d-block d-md-none">
+                        <b class="text-black">Phoenix Academy India</b> has
+                        multiple branches in bangalore such as
+                        <b class="text-black"
+                          >Belathur-Kadugodi, Channasandra-whitefield, HSR Layout
+                          and Hosur road.</b
+                        >
                       </p>
                     </div>
                   </v-col>

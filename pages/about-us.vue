@@ -74,8 +74,8 @@
                         <b class="text-black">Phoenix Academy India</b> has
                         multiple branches in bangalore such as
                         <b class="text-black"
-                          >Belathur-Kadugodi, Channasandra-whitefield, HSR Layout
-                          and Hosur road.</b
+                          >Belathur-Kadugodi, Channasandra-whitefield, HSR
+                          Layout and Hosur road.</b
                         >
                       </p>
                     </div>
@@ -84,7 +84,7 @@
                 <div>
                   <v-row>
                     <v-col>
-                      <p class="ubuntu-regular-h1 font-weight-bold text-grey">
+                      <p class="ubuntu-regular-h1 font-weight-bold title">
                         OUR MASTERS
                       </p>
                       <p class="ubuntu-regular-h2 text-black mt-5">
@@ -225,6 +225,10 @@ onMounted(() => {
 <style scoped>
 .cover-img {
   height: 550px;
+}
+
+.title {
+  color: #4f000b;
 }
 
 /* Loader Styles */

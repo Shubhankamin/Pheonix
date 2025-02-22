@@ -29,7 +29,7 @@ const whatsappLink = "https://wa.me/9686860582";
   width: 60px;
   height: 60px;
   bottom: 10%;
-  right: 40px;
+  right: 20px;
   background-color: #25d366;
   color: #fff;
   border-radius: 50%;

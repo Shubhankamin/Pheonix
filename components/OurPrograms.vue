@@ -70,7 +70,7 @@ const swiperModules = [Autoplay];
 
 const sliderImages = [
   {
-    src: "/images/prog-4.jpeg",
+    src: "/images/slider-1.png",
     title: "Monthly 8 Class",
     description:
       "Stay consistent and dedicated in your martial arts journey with 8 expertly designed karate classes offered every month.",

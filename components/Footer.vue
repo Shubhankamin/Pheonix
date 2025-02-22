@@ -9,7 +9,7 @@
         ></v-divider>
         <v-col cols="12" md="2" class="d-flex justify-center px-0 mx-0">
           <v-img
-            src="/images/logo/pheo-3.png"
+            src="/images/logo/logo-footer.png"
             @click="gotToHome"
             style="cursor: pointer"
           />

@@ -63,12 +63,20 @@
                         while honing speed, coordination, and a strong mind-body
                         connection.
                       </p>
-                      <p class="ubuntu-regular-h3 text-grey">
+                      <p class="ubuntu-regular-h3 text-grey d-none d-md-block">
                         <b class="text-black">Phoenix Academy India</b> has
                         multiple branches in bangalore such as
                         <b class="text-black">Belathur-Kadugodi,</b>
                         <b class="text-black">Channasandra-whitefield,</b>
                         <b class="text-black">HSR Layout and Hosur road.</b>
+                      </p>
+                      <p class="ubuntu-regular-h3 text-grey d-block d-md-none">
+                        <b class="text-black">Phoenix Academy India</b> has
+                        multiple branches in bangalore such as
+                        <b class="text-black"
+                          >Belathur-Kadugodi, Channasandra-whitefield, HSR
+                          Layout and Hosur road.</b
+                        >
                       </p>
                     </div>
                   </v-col>
@@ -76,7 +84,7 @@
                 <div>
                   <v-row>
                     <v-col>
-                      <p class="ubuntu-regular-h1 font-weight-bold text-grey">
+                      <p class="ubuntu-regular-h1 font-weight-bold title">
                         OUR MASTERS
                       </p>
                       <p class="ubuntu-regular-h2 text-black mt-5">
@@ -217,6 +225,10 @@ onMounted(() => {
 <style scoped>
 .cover-img {
   height: 550px;
+}
+
+.title {
+  color: #4f000b;
 }
 
 /* Loader Styles */

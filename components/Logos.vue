@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-container fluid class="  pb-0 mt-md-0 " >
-      <v-row class=" pt-md-0">
+    <v-container fluid class="pb-0 mt-md-0">
+      <v-row class="pt-md-0">
         <v-col cols="12 bg-black">
           <swiper
             :modules="swiperModules"
@@ -23,7 +23,7 @@
             <swiper-slide v-for="(item, i) in sliderImages" :key="i">
               <v-img
                 class="bg-image"
-                style="position: relative; height: 350px;"
+                style="position: relative; height: 350px"
                 :src="item.src"
                 :lazy-src="item.src"
               >
@@ -44,13 +44,39 @@ import "swiper/css/navigation";
 const swiperModules = [Autoplay, Navigation];
 
 const sliderImages = [
+  // {
+  //   src: "/images/sak-1.png",
+  //   name: "name",
+  //   subName: "subname",
+  // },
+  // {
+  //   src: "/images/kai-1.png",
+  //   name: "name",
+  //   subName: "subname",
+  // },
+  // {
+  //   src: "/images/ckf-1.png",
+  //   name: "name",
+  //   subName: "subname",
+  // },
   {
-    src: "/images/sak-1.png",
+    src: "/images/slider/wkf.png",
+    name: "name",
+    subName: "subname",
+  },
+
+  {
+    src: "/images/slider/akf.png",
     name: "name",
     subName: "subname",
   },
   {
-    src: "/images/kai-1.png",
+    src: "/images/slider/kio.png",
+    name: "name",
+    subName: "subname",
+  },
+  {
+    src: "/images/slider/seiko-2.png",
     name: "name",
     subName: "subname",
   },
@@ -59,22 +85,19 @@ const sliderImages = [
     name: "name",
     subName: "subname",
   },
-  {
-    src: "/images/ckf-1.png",
-    name: "name",
-    subName: "subname",
-  },
+
   {
     src: "/images/slider/akf.png",
     name: "name",
     subName: "subname",
   },
-   {
+  {
     src: "/images/slider/kio.png",
     name: "name",
     subName: "subname",
-  }, {
-    src: "/images/slider/seiko.png",
+  },
+  {
+    src: "/images/slider/seiko-2.png",
     name: "name",
     subName: "subname",
   },

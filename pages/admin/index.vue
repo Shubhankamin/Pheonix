@@ -116,7 +116,7 @@ const loading = ref<boolean>(false);
 const user = useCookie<any>("user");
 const { logout } = useAuth();
 const router = useRouter();
-const MAX_FILE_SIZE = 1 * 1024 * 1024;
+const MAX_FILE_SIZE = 500 * 1024; // 500 KB
 
 const snackbar = ref(false);
 const snackbarMessage = ref("");

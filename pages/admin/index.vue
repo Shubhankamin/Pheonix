@@ -179,9 +179,8 @@ const uploadImage = async (): Promise<void> => {
     return;
   }
 
-  await fetchImages(); // Refresh the gallery
+  await fetchImages(); 
 
-  // ✅ Clear the file input
   file.value = null;
   fileInput.value="";
 

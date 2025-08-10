@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     // 🔹 Send email to Admin
     await resend.emails.send({
       from: "contact@pheonixacademy.in",
-      to: "shubhankamin001@gmail.com",
+      to: "vijh45@gmail.com",
       subject: `New Contact Us Inquiry: ${subject}`,
       html: `<p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>

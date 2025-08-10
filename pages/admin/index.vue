@@ -183,7 +183,7 @@ const uploadImage = async (): Promise<void> => {
 
   // ✅ Clear the file input
   file.value = null;
-  fileInput.value?.reset();
+  fileInput.value="";
 
   loading.value = false;
   snackbarMessage.value = "Image uploaded successfully!";

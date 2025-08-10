@@ -208,11 +208,10 @@ const form = ref({
 
 const submitForm = async () => {
   try {
-    isBtnLoading.value = true; // Show loader
+    isBtnLoading.value = true; 
 
     console.log("Submitting form with data:", form.value);
 
-    // Send email using API route
     const emailResponse = await fetch("/api/send-email", {  
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -237,7 +236,7 @@ const submitForm = async () => {
     console.error("Form submission error:", err);
     snackbar.value = { show: true, message: "An error occurred!", color: "error" };
   } finally {
-    isBtnLoading.value = false; // Hide loader after response
+    isBtnLoading.value = false; 
   }
 };
 
@@ -246,13 +245,12 @@ const submitForm = async () => {
 
 
 
-const selectedAddressIndex = ref(null); // Index of selected address
-const currentMapSrc = ref(addresses.value[0].mapSrc); // Default map source
+const selectedAddressIndex = ref(null); 
+const currentMapSrc = ref(addresses.value[0].mapSrc); 
 
-// Function to handle address selection
 const selectAddress = (index) => {
   selectedAddressIndex.value = index;
-  currentMapSrc.value = addresses.value[index].mapSrc; // Update map source
+  currentMapSrc.value = addresses.value[index].mapSrc; 
 };
 </script>
 

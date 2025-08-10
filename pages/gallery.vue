@@ -11,11 +11,26 @@
       </div>
     </div>
 
-    <!-- Gallery -->
-    <v-container fluid v-else>
+    <v-container fluid v-else class="overflow-x-hidden">
       <v-row class="pa-0">
         <v-col class="pa-0">
           <Nav />
+
+          <v-alert
+            v-if="showTip"
+            type="info"
+            variant="tonal"
+            border="start"
+            border-color="primary"
+            closable
+            @click:close="showTip = false"
+            class=" mt-3 pb-10 text-white ubuntu-regular-h4 align-center"
+            style="position:absolute; height: 6vh; z-index:99999999 ; right:0.5%; background: linear-gradient(to right, #2196f3, #21cbf3); opacity: 80%;
+"
+          >
+            💡 Click on any image to view it in full size!
+          </v-alert>
+
           <v-row class="pa-5">
             <v-col
               v-for="(image, index) in images"
@@ -33,6 +48,7 @@
               </v-card>
             </v-col>
           </v-row>
+          
           <v-row>
             <v-col class="pa-0">
               <Footer />
@@ -44,6 +60,7 @@
   </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted } from "vue";
 import { api as viewerApi } from "v-viewer";
@@ -53,7 +70,7 @@ import { useGallery } from "~/composables/useGallery";
 const { images, fetchImages } = useGallery();
 
 const isLoading = ref(true);
-
+const showTip = ref(true);
 onMounted(async () => {
   try {
     await fetchImages();

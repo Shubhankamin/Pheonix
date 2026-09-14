@@ -1,21 +1,14 @@
 <template>
-  <div style="background-color: #000000" class="mt-md-1 mt-1">
-    <v-container fluid>
-      <v-row>
-        <v-col cols="12" class="">
-          <h1
-            style="text-transform: uppercase"
-            class="text-center text-white mb-2 pb-2 ubuntu-regular-h1"
-          >
-            Our programs
-          </h1>
-        </v-col>
-      </v-row>
+  <section class="programs-section">
+    <v-container fluid class="pa-0">
+      <div class="section-heading">
+        <h2 class="ubuntu-regular-h1">Our Programs</h2>
+      </div>
+
       <swiper
         :modules="swiperModules"
         :pagination="{ clickable: true }"
         :loop="true"
-        :slides-per-view="3"
         :breakpoints="{
           2560: { slidesPerView: 3 },
           1440: { slidesPerView: 3 },
@@ -23,44 +16,50 @@
           767: { slidesPerView: 2 },
           320: { slidesPerView: 1 },
         }"
-        loop="true"
         :space-between="10"
-        :autoplay="{ delay: 3000, disableOnInteraction: false }"
-        class="mySwiper mb-5 d-none d-md-block"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false,
+        }"
+        class="programs-swiper desktop-swiper"
       >
         <swiper-slide v-for="(item, i) in sliderImages" :key="i">
-          <v-img
-            class="bg-image"
-            height="400"
-            width="100%"
-            style="position: relative; object-position: top"
-            cover
-            :src="item.src"
-            :lazy-src="item.src"
-          >
-            <v-card
-              style="position: absolute; bottom: 5%; right: 5%; left: 5%"
-              min-width="300"
-              class="px-4 py-2 image-card"
-              elevation="0"
+          <div class="program-slide">
+            <v-img
+              :src="item.src"
+              :lazy-src="item.src"
+              height="400"
+              cover
+              class="program-image"
             >
-              <div class="d-flex justify-space-between">
-                <p style="text-transform: uppercase" class="ubuntu-regular-h3">
-                  {{ item.title }}
+              <div class="program-card">
+                <div class="program-card-header">
+                  <h3 class="ubuntu-regular-h3">
+                    {{ item.title }}
+                  </h3>
+
+                  <v-icon class="program-icon">
+                    mdi-arrow-top-right-thin
+                  </v-icon>
+                </div>
+
+                <p class="ubuntu-regular-h4">
+                  {{ item.description }}
                 </p>
-                <v-icon color="#ffb400">mdi-arrow-top-right-thin</v-icon>
+
+                <p v-if="item.description2" class="ubuntu-regular-h4">
+                  {{ item.description2 }}
+                </p>
               </div>
-              <p class="ubuntu-regular-h4">{{ item.description }}</p>
-              <p class="ubuntu-regular-h4">{{ item.description2 }}</p>
-            </v-card>
-          </v-img>
+            </v-img>
+          </div>
         </swiper-slide>
       </swiper>
+
       <swiper
         :modules="swiperModules"
         :pagination="{ clickable: true }"
         :loop="true"
-        :slides-per-view="3"
         :breakpoints="{
           2560: { slidesPerView: 3 },
           1440: { slidesPerView: 3 },
@@ -68,48 +67,53 @@
           767: { slidesPerView: 2 },
           320: { slidesPerView: 1 },
         }"
-        loop="true"
         :space-between="10"
-        :autoplay="{ delay: 3000, disableOnInteraction: false }"
-        class="mySwiper mb-5 d-block d-md-none"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false,
+        }"
+        class="programs-swiper mobile-swiper"
       >
         <swiper-slide v-for="(item, i) in sliderImagesMob" :key="i">
-          <v-img
-            class="bg-image"
-            height="400"
-            width="100%"
-            style="position: relative; object-position: top"
-            cover
-            :src="item.src"
-            :lazy-src="item.src"
-          >
-            <v-card
-              style="position: absolute; bottom: 5%"
-              min-width="300"
-              class="px-4 py-2 image-card"
-              elevation="0"
+          <div class="program-slide">
+            <v-img
+              :src="item.src"
+              :lazy-src="item.src"
+              height="400"
+              cover
+              class="program-image"
             >
-              <div class="d-flex justify-space-between">
-                <p style="text-transform: uppercase" class="ubuntu-regular-h3">
-                  {{ item.title }}
+              <div class="program-card">
+                <div class="program-card-header">
+                  <h3 class="ubuntu-regular-h3">
+                    {{ item.title }}
+                  </h3>
+
+                  <v-icon class="program-icon">
+                    mdi-arrow-top-right-thin
+                  </v-icon>
+                </div>
+
+                <p class="ubuntu-regular-h4">
+                  {{ item.description }}
                 </p>
-                <v-icon color="#ffb400">mdi-arrow-top-right-thin</v-icon>
+
+                <p v-if="item.description2" class="ubuntu-regular-h4">
+                  {{ item.description2 }}
+                </p>
               </div>
-              <p class="ubuntu-regular-h4">{{ item.description }}</p>
-              <p class="ubuntu-regular-h4">{{ item.description2 }}</p>
-            </v-card>
-          </v-img>
+            </v-img>
+          </div>
         </swiper-slide>
       </swiper>
     </v-container>
-  </div>
+  </section>
 </template>
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 
 const swiperModules = [Autoplay];
 
@@ -120,14 +124,12 @@ const sliderImages = [
     description:
       "Stay consistent and dedicated in your martial arts journey with 8 expertly designed karate classes offered every month.",
   },
-
   {
     src: "/images/prog-2.png",
     title: "Saturday 10-11",
     description:
       "Kickstart your weekend with karate training every Saturday from 10 to 11 AM.",
   },
-
   {
     src: "/images/prog-1.jpg",
     title: "Sunday 10-11",
@@ -135,6 +137,7 @@ const sliderImages = [
       "Wrap up your weekend with a dynamic karate session every Sunday, 10 to 11 AM.",
   },
 ];
+
 const sliderImagesMob = [
   {
     src: "/images/prog-5.jpeg",
@@ -142,14 +145,12 @@ const sliderImagesMob = [
     description:
       "Stay consistent and dedicated in your martial arts journey with 8 expertly designed karate classes offered every month.",
   },
-
   {
     src: "/images/prog-2.png",
     title: "Saturday 10-11",
     description:
       "Kickstart your weekend with karate training every Saturday from 10 to 11 AM.",
   },
-
   {
     src: "/images/prog-1.jpg",
     title: "Sunday 10-11",
@@ -160,53 +161,146 @@ const sliderImagesMob = [
 </script>
 
 <style scoped>
-.gold-title {
+.programs-section {
+  background-color: #000000;
+  color: #ffffff;
+  padding-top: 5px;
+}
+
+.section-heading {
+  padding: 45px 20px 35px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.programs-swiper {
+  width: 100%;
+  padding-bottom: 55px;
+}
+
+.program-slide {
+  position: relative;
+  width: 100%;
+}
+
+.program-image {
+  width: 100%;
+}
+
+.program-card {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  padding: 18px 20px;
+  background-color: rgba(51, 51, 68, 0.95);
+  color: #ffffff;
+}
+
+.program-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.program-card-header h3 {
+  margin: 0;
+  color: #ffffff;
   font-weight: 600;
-}
-:deep(.swiper-button-prev) {
-  color: #000;
+  text-transform: uppercase;
 }
 
-:deep(.swiper-button-next) {
-  color: #000;
+.program-icon {
+  flex-shrink: 0;
+  color: #ffb400;
+  font-size: 28px;
 }
 
-:deep(.swiper-pagination-bullet-active) {
-  background-color: #4f000b !important;
+.program-card p {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.program-card p:last-child {
+  margin-bottom: 0;
 }
 
 :deep(.swiper-pagination-bullet) {
-  color: #000;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
 }
 
-:deep(:root) {
-  color: #000;
+:deep(.swiper-pagination-bullet-active) {
+  width: 22px;
+  border-radius: 5px;
+  background-color: #ffb400;
 }
 
-.show-now {
-  font-weight: 600;
-}
-:deep(
-    .swiper-pagination-bullets,
-    .swiper-pagination-bullets.swiper-pagination-horizontal
-  ) {
-  position: absolute;
-  bottom: 40px !important;
+.desktop-swiper {
+  display: block;
 }
 
-.image-card {
-  background-color: #333344;
-  color: white;
+.mobile-swiper {
+  display: none;
 }
 
-.recent {
-  position: absolute;
-  bottom: 0%;
-  right: 1%;
-  z-index: 99999;
-}
+@media (max-width: 767px) {
+  .section-heading {
+    padding: 35px 20px 25px;
+  }
 
-.card {
-  border: 1px solid #d1a651;
+  .section-heading h2 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .desktop-swiper {
+    display: none;
+  }
+
+  .mobile-swiper {
+    display: block;
+  }
+
+  .programs-swiper {
+    padding-bottom: 45px;
+  }
+
+  .program-card {
+    right: 4%;
+    bottom: 5%;
+    left: 4%;
+    padding: 15px 16px;
+  }
+
+  .program-card-header {
+    gap: 10px;
+  }
+
+  .program-card-header h3 {
+    font-size: 16px;
+  }
+
+  .program-icon {
+    font-size: 24px;
+  }
+
+  .program-card p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
 }
 </style>

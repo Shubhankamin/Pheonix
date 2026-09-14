@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <v-container fluid class="pb-0 mt-md-0">
+  <div class="logos-section">
+    <v-container fluid class="pb-0">
       <v-row class="pt-md-0">
-        <v-col cols="12 bg-black">
+        <v-col cols="12" class="pa-0 bg-black">
           <swiper
             :modules="swiperModules"
             :pagination="{ clickable: true }"
@@ -14,20 +14,19 @@
               767: { slidesPerView: 3 },
               320: { slidesPerView: 1 },
             }"
-            loop="true"
-            :slides-per-view="3"
             :space-between="50"
-            :autoplay="{ delay: 3000, disableOnInteraction: false }"
-            class="mySwiper mb-5 mt-5 mt-md-0"
+            :autoplay="{
+              delay: 3000,
+              disableOnInteraction: false,
+            }"
+            class="mySwiper"
           >
-            <swiper-slide v-for="(item, i) in sliderImages" :key="i">
-              <v-img
-                class="bg-image"
-                style="position: relative; height: 350px"
-                :src="item.src"
-                :lazy-src="item.src"
-              >
-              </v-img>
+            <swiper-slide
+              v-for="(item, i) in sliderImages"
+              :key="i"
+              class="logo-slide"
+            >
+              <v-img :src="item.src" :lazy-src="item.src" class="logo-image" />
             </swiper-slide>
           </swiper>
         </v-col>
@@ -35,71 +34,62 @@
     </v-container>
   </div>
 </template>
+
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 
-const swiperModules = [Autoplay, Navigation];
+const swiperModules = [Autoplay];
 
 const sliderImages = [
-  // {
-  //   src: "/images/sak-1.png",
-  //   name: "name",
-  //   subName: "subname",
-  // },
-  // {
-  //   src: "/images/kai-1.png",
-  //   name: "name",
-  //   subName: "subname",
-  // },
-  // {
-  //   src: "/images/ckf-1.png",
-  //   name: "name",
-  //   subName: "subname",
-  // },
   {
     src: "/images/slider/wkf.png",
-    name: "name",
-    subName: "subname",
   },
-
   {
     src: "/images/slider/akf.png",
-    name: "name",
-    subName: "subname",
   },
   {
     src: "/images/slider/kio.png",
-    name: "name",
-    subName: "subname",
   },
   {
     src: "/images/slider/seiko-2.png",
-    name: "name",
-    subName: "subname",
   },
   {
     src: "/images/slider/wkf.png",
-    name: "name",
-    subName: "subname",
   },
-
   {
     src: "/images/slider/akf.png",
-    name: "name",
-    subName: "subname",
   },
   {
     src: "/images/slider/kio.png",
-    name: "name",
-    subName: "subname",
   },
   {
     src: "/images/slider/seiko-2.png",
-    name: "name",
-    subName: "subname",
   },
 ];
 </script>
+
+<style scoped>
+.logos-section {
+  background-color: #000000;
+}
+
+.logo-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .logo-image {
+    height: 300px;
+  }
+}
+</style>

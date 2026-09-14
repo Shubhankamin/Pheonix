@@ -1,12 +1,18 @@
 <template>
   <div class="gallery-page">
     <div v-if="isLoading" class="loading-spinner">
-      <div class="loading-spinner-inner">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="loading-content">
+        <div class="loading-spinner-inner">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <p class="loading-title">Loading Gallery...</p>
+
+        <p class="loading-message">Please wait while we load the images.</p>
       </div>
     </div>
 
@@ -82,12 +88,20 @@ const isLoading = ref(true);
 const showTip = ref(true);
 
 onMounted(async () => {
+  const startTime = Date.now();
+
   try {
     await fetchImages();
   } catch (error) {
     console.error("Error fetching images:", error);
   } finally {
-    isLoading.value = false;
+    const elapsedTime = Date.now() - startTime;
+    const minimumLoadingTime = 800;
+    const remainingTime = Math.max(0, minimumLoadingTime - elapsedTime);
+
+    setTimeout(() => {
+      isLoading.value = false;
+    }, remainingTime);
   }
 });
 

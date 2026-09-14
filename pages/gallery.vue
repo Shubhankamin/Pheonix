@@ -1,68 +1,77 @@
 <template>
-  <div>
-    <!-- Loader -->
+  <div class="gallery-page">
     <div v-if="isLoading" class="loading-spinner">
       <div class="loading-spinner-inner">
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
 
-    <v-container fluid v-else class="overflow-x-hidden">
-      <v-row class="pa-0">
-        <v-col class="pa-0">
-          <Nav />
+    <v-container v-else fluid class="gallery-container pa-0">
+      <Nav />
 
-          <v-alert
-            v-if="showTip"
-            type="info"
-            variant="tonal"
-            border="start"
-            border-color="primary"
-            closable
-            @click:close="showTip = false"
-            class=" mt-3 pb-10 text-white ubuntu-regular-h4 align-center"
-            style="position:absolute; height: 6vh; z-index:99999999 ; right:0.5%; background: linear-gradient(to right, #2196f3, #21cbf3); opacity: 80%;
-"
+      <v-alert
+        v-if="showTip"
+        closable
+        class="gallery-tip"
+        @click:close="showTip = false"
+      >
+        <div class="tip-content">
+          <v-icon class="tip-icon"> mdi-information-outline </v-icon>
+
+          <span class="tip-text">
+            Click any image to view it in full size.
+          </span>
+        </div>
+      </v-alert>
+
+      <section class="gallery-header">
+        <h1 class="ubuntu-regular-h1">Gallery</h1>
+        <p class="ubuntu-regular-h4">
+          Explore moments from Phoenix Academy India.
+        </p>
+      </section>
+
+      <v-row class="gallery-grid ma-0">
+        <v-col
+          v-for="(image, index) in images"
+          :key="index"
+          cols="6"
+          sm="6"
+          md="4"
+          lg="3"
+          class="gallery-column"
+        >
+          <v-card
+            class="image-card"
+            elevation="0"
+            @click="show(image.url, index)"
           >
-            💡 Click on any image to view it in full size!
-          </v-alert>
+            <v-img
+              :src="image.url"
+              :lazy-src="image.url"
+              height="220"
+              cover
+              class="gallery-image"
+            />
 
-          <v-row class="pa-5">
-            <v-col
-              v-for="(image, index) in images"
-              :key="index"
-              cols="6"
-              md="3"
-            >
-              <v-card class="image-card" @click="show(image.url, index)">
-                <v-img
-                  :src="image.url"
-                  class="image"
-                  height="200px"
-                  cover
-                ></v-img>
-              </v-card>
-            </v-col>
-          </v-row>
-          
-          <v-row>
-            <v-col class="pa-0">
-              <Footer />
-            </v-col>
-          </v-row>
+            <div class="image-overlay">
+              <v-icon> mdi-magnify-plus-outline </v-icon>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
+
+      <Footer />
     </v-container>
   </div>
 </template>
 
-
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { api as viewerApi } from "v-viewer";
 import "viewerjs/dist/viewer.css";
 import { useGallery } from "~/composables/useGallery";
@@ -71,26 +80,22 @@ const { images, fetchImages } = useGallery();
 
 const isLoading = ref(true);
 const showTip = ref(true);
+
 onMounted(async () => {
   try {
     await fetchImages();
-    console.log("Fetched Images:", images.value);
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Delay for 2 seconds
   } catch (error) {
     console.error("Error fetching images:", error);
   } finally {
-  }
-  setTimeout(() => {
     isLoading.value = false;
-  }, 1500);
+  }
 });
 
 const show = (imageUrl, index) => {
-  if (!imageUrl) return;
-  console.log("Clicked image URL:", imageUrl);
+  if (!imageUrl || !images.value.length) return;
 
   const viewerInstance = viewerApi({
-    images: images.value.map((img) => img.url),
+    images: images.value.map((image) => image.url),
     options: {
       zIndex: 9999,
       toolbar: true,
@@ -104,69 +109,267 @@ const show = (imageUrl, index) => {
 </script>
 
 <style scoped>
-.image-card {
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+.gallery-page {
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
 }
 
-.loading-spinner {
+.gallery-container {
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+.gallery-header {
+  padding: 55px 25px 35px;
+  text-align: center;
+}
+
+.gallery-header h1 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gallery-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gallery-grid {
+  padding: 0 30px 55px;
+}
+
+.gallery-column {
+  padding: 8px;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 180, 0, 0.15);
+  background-color: #1d1d2b;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gallery-image {
+  transition: transform 0.4s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100%;
+  background-color: rgba(79, 0, 11, 0.65);
+  color: #ffb400;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-overlay .v-icon {
+  font-size: 38px;
+}
+
+.image-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffb400;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.image-card:hover .gallery-image {
+  transform: scale(1.05);
+}
+
+.image-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.gallery-tip {
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: black; /* Change as needed */
+  top: 100px;
+  right: 25px;
+  z-index: 1001;
+  width: auto;
+  max-width: 380px;
+  padding: 12px 45px 12px 16px;
+  border: 1px solid rgba(255, 180, 0, 0.7);
+  border-radius: 4px;
+  background-color: #1d1d2b !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+.tip-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tip-icon {
+  flex-shrink: 0;
+  color: #ffb400 !important;
+  font-size: 24px;
+}
+
+.tip-text {
+  color: #ffffff !important;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+:deep(.gallery-tip .v-alert__close) {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+
+:deep(.gallery-tip .v-alert__close:hover) {
+  color: #ffb400 !important;
+  opacity: 1;
+}
+
+.loading-spinner {
+  position: fixed;
+  inset: 0;
   z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
 }
 
 .loading-spinner-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
 }
 
-.loading-spinner-circle {
-  width: 1em;
-  height: 1em;
+.loading-spinner-inner span {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: red;
-  margin: 0 5px;
-  animation: loading-spinner 1s ease-in-out infinite;
+  background-color: #ffb400;
+  animation: loading 1s ease-in-out infinite;
 }
 
-.loading-spinner-circle:nth-child(2) {
+.loading-spinner-inner span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-spinner-inner span:nth-child(3) {
   animation-delay: 0.2s;
 }
 
-.loading-spinner-circle:nth-child(3) {
+.loading-spinner-inner span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.loading-spinner-inner span:nth-child(5) {
   animation-delay: 0.4s;
 }
 
-.loading-spinner-circle:nth-child(4) {
-  animation-delay: 0.6s;
-}
-
-.loading-spinner-circle:nth-child(5) {
-  animation-delay: 0.8s;
-}
-
-@keyframes loading-spinner {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  20% {
-    transform: scale(1.5);
+@keyframes loading {
+  0%,
+  100% {
+    transform: translateY(0);
     opacity: 0.5;
   }
 
-  100% {
-    transform: scale(1);
+  50% {
+    transform: translateY(-8px);
     opacity: 1;
+  }
+}
+
+@media (max-width: 959px) {
+  .gallery-header {
+    padding: 45px 20px 30px;
+  }
+
+  .gallery-grid {
+    padding: 0 20px 45px;
+  }
+
+  .gallery-column {
+    padding: 6px;
+  }
+
+  .gallery-image {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-header {
+    padding: 35px 20px 25px;
+  }
+
+  .gallery-header h1 {
+    font-size: 34px;
+  }
+
+  .gallery-grid {
+    padding: 0 12px 35px;
+  }
+
+  .gallery-column {
+    padding: 5px;
+  }
+
+  .gallery-image {
+    height: 160px !important;
+  }
+
+  @media (max-width: 600px) {
+    .gallery-tip {
+      top: 80px;
+      right: 12px;
+      left: 12px;
+      width: auto;
+      max-width: none;
+      padding: 11px 42px 11px 14px;
+    }
+
+    .tip-content {
+      gap: 10px;
+    }
+
+    .tip-icon {
+      font-size: 21px;
+    }
+
+    .tip-text {
+      font-size: 13px;
+    }
+  }
+
+  .image-card:hover {
+    transform: none;
+  }
+
+  .image-overlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-card,
+  .gallery-image,
+  .image-overlay {
+    transition: none;
+  }
+
+  .loading-spinner-inner span {
+    animation: none;
   }
 }
 </style>

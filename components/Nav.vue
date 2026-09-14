@@ -1,152 +1,352 @@
 <template>
-  <div class="bg-black">
-    <v-container fluid>
-      <v-row class="py-0 d-none d-md-flex">
-        <v-col cols="3" class="d-flex justify-space-around align-center py-0">
-          <p
-            class="ubuntu-regular-h3 hover-red"
+  <header class="navbar">
+    <v-container fluid class="pa-0">
+      <div class="desktop-navbar">
+        <nav class="nav-section nav-left">
+          <NuxtLink
+            to="/"
+            class="nav-link"
             :class="{ active: route.path === '/' }"
-            @click="gotToHome"
           >
             HOME
-          </p>
+          </NuxtLink>
+
           <NuxtLink
             to="/gallery"
-            style="text-decoration: none"
-            class="hover-red"
-            :class="{ active: route.path === '/gallery' }"
-          >
-            <p class="ubuntu-regular-h3">GALLERY</p>
-          </NuxtLink>
-        </v-col>
-        <v-col cols="6" class="d-flex justify-center align-center py-0">
-          <NuxtLink to="/" style="text-decoration: none">
-            <v-img src="/images/logo/pheo-3.png" width="100"></v-img>
-          </NuxtLink>
-        </v-col>
-        <v-col cols="3" class="d-flex justify-space-around align-center py-0">
-          <NuxtLink
-            to="/about-us"
-            style="text-decoration: none"
-            class="hover-red"
-            :class="{ active: route.path === '/about-us' }"
-          >
-            <p class="ubuntu-regular-h3">ABOUT US</p>
-          </NuxtLink>
-          <NuxtLink
-            to="/contact-us"
-            style="text-decoration: none"
-            class="hover-red"
-            :class="{ active: route.path === '/contact-us' }"
-          >
-            <p class="ubuntu-regular-h3">CONTACT US</p>
-          </NuxtLink>
-        </v-col>
-      </v-row>
-
-      <v-row class="pa-0 ma-0 d-flex d-md-none align-center">
-        <v-col class="pa-0 ma-0" cols="2" @click="gotToHome">
-          <v-img src="/images/logo/pheo-3.png" height="50"></v-img>
-        </v-col>
-        <v-col cols="8">
-          <p class="ubuntu-regular-h2 text-center" @click="gotToHome">
-            PHEONIX ACADEMY
-          </p>
-        </v-col>
-        <v-col cols="2">
-          <v-icon @click="drawer = !drawer">mdi-menu</v-icon>
-        </v-col>
-      </v-row>
-      <v-navigation-drawer v-model="drawer" temporary location="right">
-        <div class="bg-black">
-          <div>
-            <v-img
-              src="/images/logo/pheo-3.png"
-              height="100"
-              @click="gotToHome"
-            ></v-img>
-          </div>
-
-          <div class="close-btn" style="position: absolute; top: 2%; right: 5%">
-            <v-icon @click="drawer = !drawer">mdi-close</v-icon>
-          </div>
-        </div>
-
-        <div class="text-center">
-          <v-divider :thickness="2"></v-divider>
-          <p
-            class="poppins-regular-h2 py-4"
-            @click="gotToHome"
-            :class="{ active: route.path === '/' }"
-          >
-            Home
-          </p>
-          <v-divider :thickness="2"></v-divider>
-          <p
-            class="poppins-regular-h2 py-4"
-            @click="goToGallery"
+            class="nav-link"
             :class="{ active: route.path === '/gallery' }"
           >
             GALLERY
-          </p>
-          <v-divider :thickness="2"></v-divider>
-          <p
-            class="poppins-regular-h2 py-4"
-            @click="goToAbout"
+          </NuxtLink>
+        </nav>
+
+        <NuxtLink to="/" class="nav-logo">
+          <img src="/images/logo/pheo-3.png" alt="Phoenix Academy India" />
+        </NuxtLink>
+
+        <nav class="nav-section nav-right">
+          <NuxtLink
+            to="/about-us"
+            class="nav-link"
             :class="{ active: route.path === '/about-us' }"
           >
             ABOUT US
-          </p>
-          <v-divider :thickness="2"></v-divider>
-          <p
-            class="poppins-regular-h2 py-4"
-            @click="goToContact"
+          </NuxtLink>
+
+          <NuxtLink
+            to="/contact-us"
+            class="nav-link"
             :class="{ active: route.path === '/contact-us' }"
           >
             CONTACT US
-          </p>
+          </NuxtLink>
+        </nav>
+      </div>
+
+      <div class="mobile-navbar">
+        <NuxtLink to="/" class="mobile-logo">
+          <img src="/images/logo/pheo-3.png" alt="Phoenix Academy India" />
+        </NuxtLink>
+
+        <NuxtLink to="/" class="mobile-title"> PHOENIX ACADEMY </NuxtLink>
+
+        <button
+          type="button"
+          class="menu-button"
+          aria-label="Open navigation menu"
+          @click="drawer = true"
+        >
+          <v-icon>mdi-menu</v-icon>
+        </button>
+      </div>
+
+      <v-navigation-drawer
+        v-model="drawer"
+        temporary
+        location="right"
+        class="mobile-drawer"
+      >
+        <div class="drawer-header">
+          <NuxtLink to="/" class="drawer-logo" @click="drawer = false">
+            <img src="/images/logo/pheo-3.png" alt="Phoenix Academy India" />
+          </NuxtLink>
+
+          <button
+            type="button"
+            class="close-button"
+            aria-label="Close navigation menu"
+            @click="drawer = false"
+          >
+            <v-icon>mdi-close</v-icon>
+          </button>
         </div>
+
+        <nav class="drawer-navigation">
+          <NuxtLink
+            to="/"
+            class="drawer-link"
+            :class="{ active: route.path === '/' }"
+            @click="drawer = false"
+          >
+            HOME
+          </NuxtLink>
+
+          <NuxtLink
+            to="/gallery"
+            class="drawer-link"
+            :class="{ active: route.path === '/gallery' }"
+            @click="drawer = false"
+          >
+            GALLERY
+          </NuxtLink>
+
+          <NuxtLink
+            to="/about-us"
+            class="drawer-link"
+            :class="{ active: route.path === '/about-us' }"
+            @click="drawer = false"
+          >
+            ABOUT US
+          </NuxtLink>
+
+          <NuxtLink
+            to="/contact-us"
+            class="drawer-link"
+            :class="{ active: route.path === '/contact-us' }"
+            @click="drawer = false"
+          >
+            CONTACT US
+          </NuxtLink>
+        </nav>
       </v-navigation-drawer>
     </v-container>
-  </div>
+  </header>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
 const drawer = ref(false);
-const router = useRouter();
 const route = useRoute();
-
-const gotToHome = () => {
-  router.push("/");
-};
-
-const goToGallery = () => {
-  router.push("/gallery");
-};
-
-const goToAbout = () => {
-  router.push("/about-us");
-};
-
-const goToContact = () => {
-  router.push("/contact-us");
-};
 </script>
 
 <style scoped>
-.hover-red {
-  color: white;
+.navbar {
+  position: relative;
+  z-index: 1000;
+  background-color: #4f000b;
+  color: #ffffff;
+}
+
+.desktop-navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 90px;
+  padding: 0 60px;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Ubuntu", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background-color: #ffb400;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffb400;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  display: block;
+  width: 95px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.mobile-navbar {
+  display: none;
+}
+
+.mobile-drawer {
+  background-color: #ffffff;
+}
+
+.drawer-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  background-color: #4f000b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.drawer-logo img {
+  display: block;
+  width: 105px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.close-button {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.hover-red:hover {
-  color: red;
+.close-button:hover {
+  background-color: #ffb400;
+  border-color: #ffb400;
+  color: #4f000b;
 }
 
-.active {
-  color: red !important;
+.drawer-navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-link {
+  padding: 22px 25px;
+  border-bottom: 1px solid #eeeeee;
+  color: #4f000b;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.drawer-link:hover,
+.drawer-link.active {
+  padding-left: 32px;
+  background-color: #4f000b;
+  color: #ffb400;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.menu-button:hover {
+  background-color: #ffb400;
+  border-color: #ffb400;
+  color: #4f000b;
+}
+
+@media (max-width: 960px) {
+  .desktop-navbar {
+    padding: 0 30px;
+  }
+
+  .nav-section {
+    gap: 25px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    align-items: center;
+    min-height: 68px;
+    padding: 0 15px;
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .mobile-logo img {
+    display: block;
+    width: 45px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .mobile-title {
+    color: #ffffff;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .menu-button {
+    justify-self: end;
+  }
 }
 </style>

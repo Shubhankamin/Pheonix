@@ -1,537 +1,1023 @@
 <template>
-  <div>
-      <div v-if="isLoading" class="loading-spinner">
-      <div class="loading-spinner-inner">
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
-        <div class="loading-spinner-circle"></div>
+  <div class="contact-page">
+    <!-- Loading -->
+    <div v-if="isLoading" class="loading-screen">
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
-    <v-container fluid class="py-0" v-show="!isLoading">
-      <v-row>
-        <v-col class="px-0 mx-0">
-          <v-row class="py-0 px-0 py-0">
-            <v-col class="px-0 mx-0" cols="12">
-              <Nav />
-  <v-img src="/images/cover/cover-5.jpeg" cover class="cover-img d-none d-md-block">
-              </v-img>
-              <v-img src="/images/cover/cover2.jpeg" cover class="cover-img-mob  d-block d-md-none">
-              </v-img>
-            </v-col>
-            <v-col cols="12" class="px-0 py-0">
-              <div class="bg-black px-5 py-2">
-                <p style="font-weight: 700" class="ubuntu-regular-h1">
-                  CONTACT US
-                </p>
-              </div>
-            </v-col>
-          </v-row>
-          <v-row class="px-md-10 pt-md-10" data-aos="fade-up">
-            <v-col cols="12" md="6" class="pb-10">
-              <ul class="example-2 pb-5">
-                <li class="icon-content">
-                  <a
-                    href="https://www.linkedin.com/in/vijay-achari-419b4415?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                    aria-label="LinkedIn"
-                    target="_blank"
-                    data-social="LinkedIn"
-                  >
-                    <div class="filled"></div>
-                    <v-icon>mdi-linkedin</v-icon>
-                  </a>
-                  <div class="tooltip">LinkedIn</div>
-                </li>
-                <li class="icon-content">
-                  <a
-                    href="https://www.facebook.com/share/1EgdDCL2mp/"
-                    aria-label="github"
-                    data-social="github"
-                    target="_blank"
-                  >
-                    <div class="filled"></div>
-                    <v-icon>mdi-facebook</v-icon>
-                  </a>
-                  <div class="tooltip">Facebook</div>
-                </li>
-                <li class="icon-content">
-                  <a
-                    :href="whatsappLink"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="neon pointer"
-                    aria-label="whatsapp"
-                    data-social="whatsapp"
-                  >
-                    <div class="filled"></div>
-                    <v-icon>mdi-whatsapp</v-icon>
-                  </a>
-                  <div class="tooltip">WhatsApp</div>
-                </li>
-                <li class="icon-content">
-                  <a
-                    href="https://www.instagram.com/vachar80/profilecard/?igsh=MTlqZzFva29raTFvZg=="
-                    aria-label="Instagram"
-                    target="_blank"
-                    data-social="instagram"
-                  >
-                    <div class="filled"></div>
-                    <v-icon>mdi-instagram</v-icon>
-                  </a>
-                  <div class="tooltip">Instagram</div>
-                </li>
-              </ul>
-              <div class="">
-                <div class="mapouter">
-                    <div class="gmap_canvas">
-                    <iframe
-                      class="gmap_iframe"
-                      frameborder="0"
-                      scrolling="no"
-                      marginheight="0"
-                      marginwidth="0"
-                      :src="currentMapSrc"
-                    ></iframe>
-                  </div>
+
+    <div v-else>
+      <!-- Hero -->
+      <section class="hero-section">
+        <Nav />
+
+        <v-img
+          src="/images/cover/cover-5.jpeg"
+          class="hero-image hero-desktop"
+          cover
+          alt="Phoenix Academy India"
+        />
+
+        <v-img
+          src="/images/cover/cover2.jpeg"
+          class="hero-image hero-mobile"
+          cover
+          alt="Phoenix Academy India"
+        />
+      </section>
+
+      <!-- Page Title -->
+      <section class="page-title">
+        <v-container>
+          <h1 class="ubuntu-regular-h1">CONTACT US</h1>
+        </v-container>
+      </section>
+
+      <!-- Contact Content -->
+      <main class="contact-content">
+        <v-container>
+          <v-row class="contact-grid">
+            <!-- Left Side -->
+            <v-col cols="12" md="6" class="contact-left">
+              <!-- Section Heading -->
+              <div class="section-heading">
+                <span class="heading-line"></span>
+
+                <div>
+                  <p class="heading-label">GET IN TOUCH</p>
+
+                  <h2 class="ubuntu-regular-h2">FIND US</h2>
                 </div>
               </div>
-              <div>
-                <v-row>
-                  <v-col cols="12" v-for="(address, index) in addresses" :key="index">
-                    <div
-                      :class="['address-div', { 'selected': selectedAddressIndex === index }]"
-                      @click="selectAddress(index)"
+
+              <!-- Social Media -->
+              <div class="social-section">
+                <p class="ubuntu-regular-h3 section-description">
+                  Connect with Phoenix Academy India through our social
+                  channels.
+                </p>
+
+                <ul class="social-links">
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/vijay-achari-419b4415"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      class="social-link linkedin"
                     >
-                      <p class="d-flex align-center ga-2">
-                        <v-icon>mdi-map-marker</v-icon>
-                        <div>
-                          <span class="ubuntu-regular-h3">Address: &nbsp;</span>
-                          <span class="ubuntu-regular-h3">{{ address.text }}</span>
-                        </div>
-                      </p>
-                    </div>
-                  </v-col>
-                </v-row>
+                      <v-icon>mdi-linkedin</v-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.facebook.com/share/1EgdDCL2mp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      class="social-link facebook"
+                    >
+                      <v-icon>mdi-facebook</v-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      :href="whatsappLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="WhatsApp"
+                      class="social-link whatsapp"
+                    >
+                      <v-icon>mdi-whatsapp</v-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.instagram.com/vachar80/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      class="social-link instagram"
+                    >
+                      <v-icon>mdi-instagram</v-icon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Map -->
+              <div class="map-section">
+                <div class="map-wrapper">
+                  <iframe
+                    :src="currentMapSrc"
+                    class="map-iframe"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- Locations -->
+              <div class="locations-section">
+                <div
+                  v-for="(address, index) in addresses"
+                  :key="index"
+                  class="location-card"
+                  :class="{
+                    selected: selectedAddressIndex === index,
+                  }"
+                  @click="selectAddress(index)"
+                >
+                  <div class="location-icon">
+                    <v-icon>mdi-map-marker</v-icon>
+                  </div>
+
+                  <div class="location-info">
+                    <p class="location-label">TRAINING LOCATION</p>
+
+                    <p class="location-name ubuntu-regular-h3">
+                      {{ address.text }}
+                    </p>
+                  </div>
+
+                  <v-icon class="location-arrow"> mdi-arrow-right </v-icon>
+                </div>
               </div>
             </v-col>
-            <v-col cols="12" md="6" class="px-10 px-md-5 pt-md-16 mt-md-3">
-          <form @submit.prevent="submitForm">
-  <div>
-    <p class="pb-5 ubuntu-regular-h3">Name</p>
-    <input v-model="form.name" placeholder="Enter your Name" class="input w-100 py-1" type="text" required />
-  </div>
-  <div>
-    <p class="py-5 ubuntu-regular-h3">Email</p>
-    <input v-model="form.email" class="input w-100 py-1" type="email" placeholder="Enter Email" required />
-  </div>
-  <div>
-    <p class="py-5 ubuntu-regular-h3">Subject</p>
-    <input v-model="form.subject" class="input w-100 py-1" placeholder="Enter Subject" required />
-  </div>
-  <div>
-    <p class="py-5 ubuntu-regular-h3">Message</p>
-    <textarea v-model="form.message" class="input w-100" placeholder="Message" required></textarea>
-  </div>
-<v-btn 
-  class="py-2 px-12 mt-md-16 mt-4 mb-md-0 mb-4 ubuntu-regular-h3 button"
-  color="black"
-  :loading="isBtnLoading"
-  :disabled="isBtnLoading"
-  elevation="0"
-  type="submit"
->
-  Submit
-</v-btn>
-</form>
 
+            <!-- Right Side -->
+            <v-col cols="12" md="6" class="contact-right">
+              <div class="form-card">
+                <div class="section-heading form-heading">
+                  <span class="heading-line"></span>
+
+                  <div>
+                    <p class="heading-label">SEND A MESSAGE</p>
+
+                    <h2 class="ubuntu-regular-h2">CONTACT US</h2>
+                  </div>
+                </div>
+
+                <p class="form-intro ubuntu-regular-h3">
+                  Have a question about our classes, training programs, or
+                  locations? Send us a message and our team will get back to
+                  you.
+                </p>
+
+                <form @submit.prevent="submitForm" class="contact-form">
+                  <!-- Name -->
+                  <div class="form-group">
+                    <label for="name"> Name </label>
+
+                    <input
+                      id="name"
+                      v-model="form.name"
+                      type="text"
+                      placeholder="Enter your name"
+                      required
+                      autocomplete="name"
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div class="form-group">
+                    <label for="email"> Email </label>
+
+                    <input
+                      id="email"
+                      v-model="form.email"
+                      type="email"
+                      placeholder="Enter your email"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+
+                  <!-- Subject -->
+                  <div class="form-group">
+                    <label for="subject"> Subject </label>
+
+                    <input
+                      id="subject"
+                      v-model="form.subject"
+                      type="text"
+                      placeholder="Enter subject"
+                      required
+                    />
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <label for="message"> Message </label>
+
+                    <textarea
+                      id="message"
+                      v-model="form.message"
+                      placeholder="Write your message..."
+                      rows="6"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <!-- Submit -->
+                  <button
+                    type="submit"
+                    class="submit-button"
+                    :disabled="isBtnLoading"
+                  >
+                    <span v-if="!isBtnLoading"> SEND MESSAGE </span>
+
+                    <span v-else class="button-loading">
+                      <v-progress-circular indeterminate size="20" width="2" />
+                      SENDING...
+                    </span>
+
+                    <v-icon v-if="!isBtnLoading"> mdi-arrow-right </v-icon>
+                  </button>
+                </form>
+              </div>
             </v-col>
           </v-row>
-          <v-row>
-            <v-col class="pa-0">
-              <Footer />
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-       <v-snackbar v-model="snackbar.show" :color="snackbar.color" timeout="3000">
-    {{ snackbar.message }}
-  </v-snackbar>
-    </v-container>
+        </v-container>
+      </main>
+
+      <Footer />
+
+      <!-- Snackbar -->
+      <v-snackbar
+        v-model="snackbar.show"
+        :color="snackbar.color"
+        timeout="3000"
+        location="bottom right"
+      >
+        {{ snackbar.message }}
+      </v-snackbar>
+    </div>
   </div>
 </template>
+
 <script setup>
 useSeoMeta({
-  title: "CONTACT US | PHEONIX ACADEMY",
-  ogTitle: "CONTACT US | PHEONIX ACADEMY",
-  description: "where timeless craftsmanship meets unmatched purity",
-  ogDescription: "where timeless craftsmanship meets unmatched purity",
-  ogImage: "https://sustainability.manipal.edu//images/seo/logo-og.png",
+  title: "CONTACT US | PHOENIX ACADEMY INDIA",
+  ogTitle: "CONTACT US | PHOENIX ACADEMY INDIA",
+  description:
+    "Contact Phoenix Academy India for martial arts training, classes, locations, and enquiries.",
+  ogDescription:
+    "Contact Phoenix Academy India for martial arts training, classes, locations, and enquiries.",
+  ogImage: "/images/cover/cover-5.jpeg",
   twitterCard: "summary_large_image",
 });
 
 const isLoading = ref(true);
-const isBtnLoading=ref(false)
-const snackbar = ref({ show: false, message: "", color: "success" });
-onMounted(() => {
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 1000); 
+const isBtnLoading = ref(false);
+
+const snackbar = ref({
+  show: false,
+  message: "",
+  color: "success",
 });
-
-const whatsappLink = "https://wa.me/9686860582";
-const addresses = ref([
-  {
-    text: "Belathur-Kadugodi",
-    mapSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5673550784536!2d77.75019304044993!3d12.999500787371248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0f0017e1aaad%3A0x134ff725f8ffb1fb!2sBelathur!5e0!3m2!1sen!2sin!4v1735978887710!5m2!1sen!2sin" 
-  },
-  {
-    text: "Channasandra-whitefield",
-    mapSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.834666807302!2d77.75492764044974!3d12.982424387386711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0e0f5bb6cd77%3A0x9c2ad8af90920046!2sWhitefield%20Global%20School!5e0!3m2!1sen!2sin!4v1735978947926!5m2!1sen!2sin" 
-  },
-  {
-    text: " HSR Layout and Hosur road",
-    mapSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.844028490846!2d77.66404964044807!3d12.853348687503495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14494a8943f7%3A0x768d0f9874c48675!2sHosur%20Rd%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1735979047830!5m2!1sen!2sin" 
-  },
-]);
-
 
 const form = ref({
   name: "",
   email: "",
   subject: "",
-  message: ""
+  message: "",
 });
 
-const submitForm = async () => {
-  try {
-    isBtnLoading.value = true; 
+const whatsappLink = "https://wa.me/9686860582";
 
-    console.log("Submitting form with data:", form.value);
+const addresses = [
+  {
+    text: "Belathur - Kadugodi",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5673550784536!2d77.75019304044993!3d12.999500787371248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0f0017e1aaad%3A0x134ff725f8ffb1fb!2sBelathur!5e0!3m2!1sen!2sin!4v1735978887710!5m2!1sen!2sin",
+  },
+  {
+    text: "Channasandra - Whitefield",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.834666807302!2d77.75492764044974!3d12.982424387386711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0e0f5bb6cd77%3A0x9c2ad8af90920046!2sWhitefield%20Global%20School!5e0!3m2!1sen!2sin!4v1735978947926!5m2!1sen!2sin",
+  },
+  {
+    text: "HSR Layout and Hosur Road",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.844028490846!2d77.66404964044807!3d12.853348687503495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14494a8943f7%3A0x768d0f9874c48675!2sHosur%20Rd%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1735979047830!5m2!1sen!2sin",
+  },
+];
 
-    const emailResponse = await fetch("/api/send-email", {  
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form.value),
-    });
+const selectedAddressIndex = ref(0);
 
-    console.log("Email response status:", emailResponse.status);
-
-    if (!emailResponse.ok) {
-      const errorResponse = await emailResponse.json();
-      console.error("Error sending email:", errorResponse);
-
-      snackbar.value = { show: true, message: "Failed to send message!", color: "error" };
-      return;
-    }
-
-    snackbar.value = { show: true, message: "Message sent successfully!", color: "success" };
-
-    form.value = { name: "", email: "", subject: "", message: "" };
-
-  } catch (err) {
-    console.error("Form submission error:", err);
-    snackbar.value = { show: true, message: "An error occurred!", color: "error" };
-  } finally {
-    isBtnLoading.value = false; 
-  }
-};
-
-
-
-
-
-
-const selectedAddressIndex = ref(null); 
-const currentMapSrc = ref(addresses.value[0].mapSrc); 
+const currentMapSrc = computed(() => {
+  return addresses[selectedAddressIndex.value].mapSrc;
+});
 
 const selectAddress = (index) => {
   selectedAddressIndex.value = index;
-  currentMapSrc.value = addresses.value[index].mapSrc; 
 };
+
+const submitForm = async () => {
+  try {
+    isBtnLoading.value = true;
+
+    const response = await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form.value),
+    });
+
+    if (!response.ok) {
+      let errorMessage = "Failed to send message.";
+
+      try {
+        const errorResponse = await response.json();
+        errorMessage = errorResponse?.message || errorMessage;
+      } catch {
+        // Keep default error message
+      }
+
+      snackbar.value = {
+        show: true,
+        message: errorMessage,
+        color: "error",
+      };
+
+      return;
+    }
+
+    snackbar.value = {
+      show: true,
+      message: "Message sent successfully!",
+      color: "success",
+    };
+
+    form.value = {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+  } catch (error) {
+    console.error("Form submission error:", error);
+
+    snackbar.value = {
+      show: true,
+      message: "Unable to send message. Please try again.",
+      color: "error",
+    };
+  } finally {
+    isBtnLoading.value = false;
+  }
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 800);
+});
 </script>
 
 <style scoped>
-.heading {
-  text-transform: uppercase;
+/* ========================================
+   PAGE
+======================================== */
+
+.contact-page {
+  background-color: #ffffff;
+  color: #111111;
 }
 
-.cover-img {
-  height: 550px;
-}
-.cover-img-mob {
-}
-.cover-image{
-  background-position-y: center;
-  background-image: url("/images/cover-final.jpeg");
-  height: 40vh;
-}
-.address-div {
-  border: 1px solid red;
-  margin-top: 1rem;
-  padding: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.address-div.selected {
-  background-color: rgba(128, 128, 128, 0.192); /* Grey with 50% opacity */
-}
+/* ========================================
+   LOADING
+======================================== */
 
-.button{
-  height: 50px !important;
-}
-
-.neon {
-  color: #d3f576;
-}
-.neon:hover {
-  color: #0077b5;
-}
-/* From Uiverse.io by xueyuantan */
-button {
-  width: 9em;
-  height: 3em;
-  font-size: 15px;
-  font-family: inherit;
-  border: 1px solid white;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  background-color: black;
-  color: red;
-  font-weight: 600;
-}
-
-.main {
-  background-image: url("images/meteor.svg");
-  background-size: cover;
-}
-
-button::before {
-  content: "";
-  width: 0;
-  height: 3em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(to right, #da1904 0%, #020000 100%);
-  transition: 0.5s ease;
-  display: block;
-  color: white !important;
-
-  z-index: -1;
-}
-
-button:hover::before {
-  width: 9em;
-  color: white !important;
-}
-
-.mapouter {
-  position: relative;
-  text-align: right;
-  width: 100%;
-  height: 450px;
-}
-.gmap_canvas {
-  overflow: hidden;
-  background: none !important;
-  width: 100%;
-  height: 450px;
-}
-.gmap_iframe {
-  width: 100% !important;
-  height: 450px !important;
-}
-
-/* From Uiverse.io by SSpisso */
-.input {
-  background-color: #38383850;
-  border: 1ex solid none;
-  border-top-width: 1.7em;
-  margin: 0;
-  padding: 0;
-  color: #383838;
-  word-wrap: break-word;
-  outline: 7px solid #383838;
-  font-size: 17px;
-  text-align: center;
-  transition: all 0.5s;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
-}
-
-.input:hover {
-  border-top-width: 0.2em;
-  background-color: #f1e8e8;
-}
-
-.input:focus {
-  border-top-width: 0.2em;
-  background-color: #f1e8e8;
-}
-
-/* From Uiverse.io by Artahs */
-ul {
-  list-style: none;
-}
-
-.example-2 {
-  display: flex;
-}
-.example-2 .icon-content {
-  margin: 0 10px;
-  position: relative;
-}
-.example-2 .icon-content .tooltip {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 5px;
-  opacity: 0;
-  visibility: hidden;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-.example-2 .icon-content:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  top: -50px;
-}
-.example-2 .icon-content a {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #4d4d4d;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-.example-2 .icon-content a:hover {
-  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
-}
-.example-2 .icon-content a svg {
-  position: relative;
-  z-index: 1;
-  width: 30px;
-  height: 30px;
-}
-.example-2 .icon-content a:hover {
-  color: white;
-}
-.example-2 .icon-content a .filled {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #000;
-  transition: all 0.3s ease-in-out;
-}
-.example-2 .icon-content a:hover .filled {
-  height: 100%;
-}
-
-.example-2 .icon-content a[data-social="LinkedIn"] .filled,
-.example-2 .icon-content a[data-social="LinkedIn"] ~ .tooltip {
-  background-color: #1343f2;
-}
-
-.example-2 .icon-content a[data-social="whatsapp"] .filled,
-.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
-  background-color: #03f930;
-}
-
-.example-2 .icon-content a[data-social="github"] .filled,
-.example-2 .icon-content a[data-social="github"] ~ .tooltip {
-  background-color: #171d25;
-}
-.example-2 .icon-content a[data-social="instagram"] .filled,
-.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
-  background: linear-gradient(
-    45deg,
-    #405de6,
-    #5b51db,
-    #b33ab4,
-    #c135b4,
-    #e1306c,
-    #fd1f1f
-  );
-}
-.example-2 .icon-content a[data-social="youtube"] .filled,
-.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
-  background-color: #ff0000;
-}
-.loading-spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
+.loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: black; /* Change as needed */
+  inset: 0;
   z-index: 9999;
-}
 
-.loading-spinner-inner {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-color: #4f000b;
 }
 
-.loading-spinner-circle {
-  width: 1em;
-  height: 1em;
+.loader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.loader span {
+  width: 10px;
+  height: 10px;
+
   border-radius: 50%;
-  background-color: red;
-  margin: 0 5px;
-  animation: loading-spinner 1s ease-in-out infinite;
+  background-color: #ffb400;
+
+  animation: loader-animation 1s ease-in-out infinite;
 }
 
-.loading-spinner-circle:nth-child(2) {
-  animation-delay: 0.2s;
+.loader span:nth-child(2) {
+  animation-delay: 0.15s;
 }
 
-.loading-spinner-circle:nth-child(3) {
-  animation-delay: 0.4s;
+.loader span:nth-child(3) {
+  animation-delay: 0.3s;
 }
 
-.loading-spinner-circle:nth-child(4) {
+.loader span:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.loader span:nth-child(5) {
   animation-delay: 0.6s;
 }
 
-.loading-spinner-circle:nth-child(5) {
-  animation-delay: 0.8s;
-}
-
-@keyframes loading-spinner {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  20% {
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
-
+@keyframes loader-animation {
+  0%,
   100% {
     transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.6);
     opacity: 1;
   }
 }
 
+/* ========================================
+   HERO
+======================================== */
+
+.hero-image {
+  width: 100%;
+}
+
+.hero-desktop {
+  height: 550px;
+}
+
+.hero-mobile {
+  display: none;
+  height: 360px;
+}
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.page-title {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.page-title h1 {
+  margin: 0;
+  padding: 22px 0;
+
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.contact-content {
+  padding: 70px 0 90px;
+}
+
+.contact-grid {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   SECTION HEADINGS
+======================================== */
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  margin-bottom: 30px;
+}
+
+.heading-line {
+  width: 5px;
+  min-width: 5px;
+  height: 58px;
+
+  background-color: #ffb400;
+}
+
+.heading-label {
+  margin: 0 0 4px;
+
+  color: #4f000b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #111111;
+  font-weight: 700;
+}
+
+/* ========================================
+   LEFT SIDE
+======================================== */
+
+.contact-left {
+  padding-right: 45px;
+}
+
+.section-description {
+  margin: 0 0 22px;
+
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* ========================================
+   SOCIAL LINKS
+======================================== */
+
+.social-section {
+  margin-bottom: 35px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.social-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  overflow: hidden;
+
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+
+  background-color: #ffffff;
+  color: #4f000b;
+
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-4px);
+}
+
+.social-link.linkedin:hover {
+  background-color: #0a66c2;
+}
+
+.social-link.facebook:hover {
+  background-color: #1877f2;
+}
+
+.social-link.whatsapp:hover {
+  background-color: #25d366;
+}
+
+.social-link.instagram:hover {
+  background-color: #d62976;
+}
+
+/* ========================================
+   MAP
+======================================== */
+
+.map-section {
+  margin-bottom: 25px;
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 390px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+  background-color: #eeeeee;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.map-iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+/* ========================================
+   LOCATIONS
+======================================== */
+
+.locations-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  min-height: 75px;
+  padding: 12px 16px;
+
+  border: 1px solid #e4e4e4;
+  border-left: 4px solid transparent;
+
+  background-color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.location-card:hover {
+  background-color: #fafafa;
+  transform: translateX(4px);
+}
+
+.location-card.selected {
+  border-left-color: #ffb400;
+  background-color: #f7f7f7;
+}
+
+.location-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background-color: #4f000b;
+  color: #ffb400;
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-label {
+  margin: 0 0 2px;
+
+  color: #999999;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.location-name {
+  margin: 0;
+  color: #222222;
+}
+
+.location-arrow {
+  color: #999999;
+  transition: transform 0.3s ease;
+}
+
+.location-card:hover .location-arrow {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   FORM CARD
+======================================== */
+
+.contact-right {
+  padding-left: 45px;
+}
+
+.form-card {
+  padding: 45px;
+
+  border-top: 5px solid #4f000b;
+
+  background-color: #f7f7f7;
+}
+
+.form-heading {
+  margin-bottom: 20px;
+}
+
+.form-intro {
+  margin: 0 0 35px;
+
+  color: #777777;
+  line-height: 1.6;
+}
+
+/* ========================================
+   FORM
+======================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 2px;
+
+  background-color: #ffffff;
+  color: #222222;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form-group input {
+  height: 50px;
+}
+
+.form-group textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4f000b;
+  box-shadow: 0 0 0 3px rgba(79, 0, 11, 0.08);
+}
+
+/* ========================================
+   SUBMIT BUTTON
+======================================== */
+
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 8px;
+
+  border: none;
+
+  background-color: #4f000b;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #68000f;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 960px) {
+  .contact-left {
+    padding-right: 20px;
+  }
+
+  .contact-right {
+    padding-left: 20px;
+  }
+
+  .form-card {
+    padding: 30px;
+  }
+
+  .map-wrapper {
+    height: 350px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+  .hero-desktop {
+    display: none;
+  }
+
+  .hero-mobile {
+    display: block;
+  }
+
+  .hero-image {
+    height: 350px;
+  }
+
+  .page-title h1 {
+    padding: 18px 0;
+    font-size: 28px;
+  }
+
+  .contact-content {
+    padding: 45px 16px 60px;
+  }
+
+  .contact-grid {
+    margin: 0;
+  }
+
+  .contact-left,
+  .contact-right {
+    padding: 0;
+  }
+
+  .contact-right {
+    margin-top: 45px;
+  }
+
+  .section-heading {
+    margin-bottom: 25px;
+  }
+
+  .heading-line {
+    height: 50px;
+  }
+
+  .heading-label {
+    font-size: 11px;
+  }
+
+  .section-heading h2 {
+    font-size: 25px;
+  }
+
+  .section-description {
+    font-size: 16px;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 45px;
+    height: 45px;
+  }
+
+  .map-wrapper {
+    height: 300px;
+  }
+
+  .location-card {
+    min-height: 70px;
+  }
+
+  .location-name {
+    font-size: 16px;
+  }
+
+  .form-card {
+    padding: 28px 20px;
+  }
+
+  .form-intro {
+    font-size: 16px;
+  }
+
+  .form-group input {
+    height: 48px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .hero-image {
+    height: 300px;
+  }
+
+  .contact-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .map-wrapper {
+    height: 280px;
+  }
+
+  .form-card {
+    padding: 25px 16px;
+  }
+
+  .location-card {
+    padding: 10px 12px;
+  }
+
+  .location-icon {
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+  }
+}
 </style>
